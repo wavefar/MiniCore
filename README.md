@@ -2,12 +2,27 @@
 #### 项目介绍
 android快速开发项目介绍，常用公共库（mini-core）整合okHttp、dataBinding、retrofit、glide、eventbus、
 bindingcollectionadapter、agentweb等常用三方工具库；
+#### 使用指南（Usage Guide）
+**从 JCenter 导入**
+```groovy
+dependencies {
+	   implementation 'org.wavefar.lib:mini-core:1.0.0'
+}
+```
+**下载源码，本地导入**
+
+```
+dependencies {
+     api project(':mini-core')
+}
+```
+最低支持 android 4.4 ,api 19 
 
 #### 目录介绍
 - base目录，封装常用基类；
 - binding目录，封装常用的BindingAdapter；
 - exception目录，封装常用的http异常处理；
-- net目录，okHttp+retrofit+rxjava2封装，常用rest(get\post\delete\postFile\download)的封装,统一处理了的日志、缓存、Cookie、头信息；
+- net目录，okHttp+retrofit+rxjava2封装，常用restful API(get\post\delete\postFile\download)的封装,统一处理了的日志、缓存、Cookie、头信息；
 - ui 目录，封装了常用的功能activity/fragment（引导页、WebView封装、Tab菜单封装）
    - 引导页GuideActivity,如项目中需要引导操作的继承该类做业务处理；
    - Tab菜单页封装 TabFragmentActivity；

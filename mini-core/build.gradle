@@ -7,9 +7,9 @@ android {
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         //默认API访问地址配置，在子项目中可以复写该配置；
-        buildConfigField("String", "HOST", "\"http://www.baidu.com\"")
+        buildConfigField("String", "HOST", "\"https://www.52it.club\"")
     }
     dataBinding {
         enabled true
