@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical" >
+
+    <EditText
+        android:id="@+id/verifycode_et"
+        style="@style/input_style"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/getcode_btn"
+        android:background="@null"
+        android:hint="输入验证码"
+        android:inputType="text"
+        android:maxLength="20"
+        android:textColor="#111111"
+        android:textColorHint="#bbbbbb"
+        android:textSize="15sp" />
+
+    <include
+        android:id="@+id/line"
+        android:layout_width="0.5dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/verifycode_et"
+        android:layout_alignTop="@+id/verifycode_et"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/verifycode_et"
+        layout="@layout/public_line_divider" />
+
+    <Button
+        android:id="@+id/getcode_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/verifycode_et"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/verifycode_et"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@null"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="获取验证码"
+        android:textColor="@color/iv_back_uncheck"
+        android:textSize="15sp" />
+
+</RelativeLayout>

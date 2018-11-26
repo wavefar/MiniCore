@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.lq.cxy.shop.model.viewmodel.GoodViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.lq.cxy.shop.model.viewmodel.GoodViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="org.wavefar.lib.binding.viewadapter.recyclerview.LineManagers" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/iv_back_selector">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_centerVertical="true"
+                android:clickable="true"
+                android:scaleType="center"
+                android:src="@drawable/back" />
+
+            <org.wavefar.lib.ui.widget.ClearEditText
+                android:id="@+id/keywordEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_back"
+                android:layout_margin="@dimen/dp_10"
+                android:background="@drawable/share_gray_stroke"
+                android:singleLine="true"
+                android:drawableRight="@mipmap/clean_edit"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:imeActionLabel="搜索"
+                android:imeOptions="actionSearch"
+                android:hint="输入商品关键字搜索"
+                android:padding="10dp" />
+        </RelativeLayout>
+
+        <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+            android:id="@+id/twinklingRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+            binding:onRefreshCommand="@{viewModel.onRefreshCommand}"
+            binding:tr_head_height="80dp"
+            binding:tr_wave_height="80dp">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                binding:adapter="@{viewModel.adapter}"
+                binding:itemBinding="@{viewModel.itemBinding}"
+                binding:items="@{viewModel.observableList}"
+                binding:layoutManager="@{LayoutManagers.grid(2)}" />
+
+        </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+
+    </LinearLayout>
+</layout>

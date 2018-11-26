@@ -1,0 +1,82 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#F0EEE7"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_main" />
+
+    <TextView
+        android:id="@+id/update_pwd_ll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/white"
+        android:drawablePadding="10dp"
+        android:drawableRight="@drawable/select_arrow"
+        android:padding="@dimen/dp_18"
+        android:text="@string/setting_update_pwd"
+        android:textColor="@color/setting_tvLeftColor" />
+
+    <include layout="@layout/public_line_divider" />
+
+    <RelativeLayout
+        android:id="@+id/relate_update_soft"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_ffffff"
+        android:padding="@dimen/dp_18">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="@string/setting_check_version"
+            android:textColor="@color/setting_tvLeftColor" />
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableRight="@drawable/select_arrow"
+            android:text="v1.0.0"
+            android:textColor="@color/setting_tvRigthColor" />
+    </RelativeLayout>
+
+    <include layout="@layout/public_line_divider" />
+
+    <TextView
+        android:id="@+id/about_tv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:drawablePadding="10dp"
+        android:drawableRight="@drawable/select_arrow"
+        android:padding="@dimen/dp_18"
+        android:text="@string/setting_about"
+        android:textColor="@color/setting_tvLeftColor" />
+
+    <include layout="@layout/public_line_divider" />
+
+    <Button
+        android:id="@+id/logout_btn"
+        style="@style/BaseTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_btn"
+        android:gravity="center"
+        android:text="@string/logout_btn"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+</LinearLayout>

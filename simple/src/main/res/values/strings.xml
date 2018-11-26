@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">万家商城</string>
+    <string name="go_back_str">返回</string>
+    <string name="logout_btn">注销</string>
+    <string name="agreement_tip">登录即同意用户协议</string>
+
+    <!--系统设置-->
+    <string name="setting_check_version">检查新版本</string>
+    <string name="setting_update_pwd">修改密码</string>
+    <string name="setting_about">关于我们</string>
+
+    <!--收货地址-->
+    <string name="receive_username_str">收货人:</string>
+    <string name="reveive_phone_str">电话号码:</string>
+    <string name="receive_area_sum_str">所在地区:</string>
+    <string name="receive_area_str">详细地址:</string>
+    <string name="receive_area_hint_str">街道、楼牌号等</string>
+    <string name="receive_address_manage_title">地址管理</string>
+    <string name="receive_change_addr">修改收货地址</string>
+    <string name="receive_add_addr">添加收货地址</string>
+
+    <!--购物车-->
+    <string name="go_to_ordering"> 去结算</string>
+    <string name="shop_car_str"> 购物车</string>
+
+    <!--商品详情-->
+    <string name="goods_detail_title"> 商品详情</string>
+    <string name="goods_favorite_title"> 商品关注</string>
+    <string name="goods_send_to_addr"> 配送至：</string>
+    <string name="goods_send_to_method"> 配送方式</string>
+
+    <!--订单列表及产品列表相关-->
+    <string name="order_num">订单号： %1$s</string>
+    <string name="productNumTv">数量： %1$s</string>
+    <string name="order_money">合计：%1$s</string>
+    <string name="deposit_money">押金：%1$s</string>
+
+    <!--评价相关-->
+    <string name="pl_tv">评价内容</string>
+    <string name="df_tv">打分</string>
+    <string name="pl_tip">有您的评价，我们会更加努力的！</string>
+
+    <!-- 个人资料 -->
+    <string name="avatar_str">头像</string>
+    <string name="name_str">昵称</string>
+    <string name="sex_str">性别</string>
+    <string name="sex_value_str">保密</string>
+    <string name="save_btn_str">保存</string>
+
+    <!--商家端-->
+    <string name="merchant_add_goods">添加商品</string>
+    <string name="merchant_update_goods">更新商品信息</string>
+    <string name="merchant_detail_goods">商品详情</string>
+    <string name="please_input_company_name_str">请输入公司名字</string>
+    <string name="please_input_company_addr_str">请输入公司地址</string>
+    <string name="please_input_company_scope_str">请输入公司经营范围</string>
+    <string name="please_input_company_capital_str">请输入公司注册资金</string>
+    <string name="please_input_legal_name_str">请输入公司法人姓名</string>
+    <string name="please_input_legal_num_str">请输入公司法人证件号</string>
+    <string name="please_input_valid_legal_num_str">请输入有效的法人证件号</string>
+    <string name="please_input_license_num_str">请输入营业执照注册号码</string>
+    <string name="please_input_valid_license_num_str">请输入正确的营业执照注册号码</string>
+    <string name="please_input_license_addr_str">请输入营业执照所在地</string>
+    <string name="please_input_em_name_str">请输入紧急联系人姓名</string>
+    <string name="please_input_em_phone_str">请输入紧急联系人联系电话</string>
+    <string name="please_select_license_str">请选择执照图片</string>
+    <string name="end_time_must_bigger_than_start">结束时间必须大于开始时间</string>
+    <string name="start_str">开始</string>
+    <string name="end_str">结束</string>
+    <string name="license_type_str">执照类型</string>
+    <string name="apply_merchant">申请入驻</string>
+    <string name="apply_merchant_update">申请资料修改</string>
+    <string name="add_shop_title">添加商铺</string>
+    <string name="update_shop_title">更新商铺信息</string>
+
+    <string name="merchant_order_product_num_format">数量： %1$d</string>
+    <string name="merchant_fund_format">金额： %1$s</string>
+    <string name="merchant_fund_type_format">收入类型： %1$s</string>
+    <string name="merchant_fund_name_format">提现人姓名： %1$s</string>
+    <string name="merchant_fund_manage_title">资金管理</string>
+    <!--商家端 结束-->
+</resources>

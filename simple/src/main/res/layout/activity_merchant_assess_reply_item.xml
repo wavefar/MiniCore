@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.lq.cxy.shop.model.viewmodel.MerchantAssessReplyItemViewModel" />
+
+        <import type="com.lq.cxy.shop.model.entity.MerchantAssesItemEntity" />
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="vm"
+            type="com.lq.cxy.shop.model.viewmodel.MerchantAssessReplyItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{()->vm.onClick()}"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+        <org.wavefar.lib.ui.widget.imageview.CircularImage
+            android:id="@+id/product_logo_iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/photo_circle_bg"
+            android:scaleType="centerCrop"
+            binding:url="@{vm.itemEntity.avatar}" />
+
+        <TextView
+            android:id="@+id/nameTv"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/product_logo_iv"
+            android:layout_toRightOf="@+id/product_logo_iv"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_10"
+            android:singleLine="true"
+            android:text="@{TextUtils.isEmpty(vm.itemEntity.name)?vm.itemEntity.loginName:vm.itemEntity.name}"
+            android:textColor="#333333"
+            android:textSize="15sp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@style/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/product_logo_iv"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_toRightOf="@+id/product_logo_iv"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="@{vm.itemEntity.star}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameTv"
+            android:layout_alignBottom="@+id/product_logo_iv"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:text="@{vm.itemEntity.createTime}"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/assessMessage"
+            style="@style/BaseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ratingBar"
+            android:layout_toRightOf="@+id/product_logo_iv"
+            android:gravity="center_vertical"
+            android:lines="2"
+            android:text="@{vm.itemEntity.evaluate}"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/assessMessage"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_8"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:onClick="@{()->vm.onClick()}"
+            android:paddingLeft="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_4"
+            android:paddingRight="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_4"
+            android:text="回复"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14" />
+    </RelativeLayout>
+
+
+</layout>

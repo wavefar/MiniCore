@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            tools:context=".activity.merchant.MerPayAccount">
+
+            <include layout="@layout/head_layout" />
+
+            <LinearLayout
+                android:id="@+id/alipayRoot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:paddingLeft="@dimen/dp_8"
+                    android:paddingRight="@dimen/dp_8"
+                    android:src="@drawable/pay_account_alipay" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_54"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp_8"
+                    android:paddingRight="@dimen/dp_8">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/dp_8"
+                        android:gravity="center_vertical"
+                        android:text="账号：" />
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/pay_account_alipay"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="请输入支付宝账号"
+                        android:textSize="@dimen/sp_16" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_54"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp_8"
+                    android:paddingRight="@dimen/dp_8">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/dp_8"
+                        android:gravity="center_vertical"
+                        android:text="姓名：" />
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/pay_alipay_real_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="请输入真实姓名"
+                        android:textSize="@dimen/sp_16" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/clickToBindAlipayAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_32"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:layout_marginRight="@dimen/dp_32"
+                    android:background="@drawable/round_cornor_24dp_bg"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/dp_12"
+                    android:paddingBottom="@dimen/dp_8"
+                    android:text="绑定支付宝"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/weiChatPayRoot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_32"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:paddingLeft="@dimen/dp_8"
+                    android:paddingRight="@dimen/dp_8"
+                    android:src="@drawable/pay_account_alipay" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_54"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp_8"
+                    android:paddingRight="@dimen/dp_8">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/dp_8"
+                        android:gravity="center_vertical"
+                        android:text="账号：" />
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/pay_account_wechat_pay"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="请输入支付宝账号"
+                        android:textSize="@dimen/sp_16" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_54"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp_8"
+                    android:paddingRight="@dimen/dp_8">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/dp_8"
+                        android:gravity="center_vertical"
+                        android:text="姓名：" />
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/pay_wechat_real_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="请输入真实姓名"
+                        android:textSize="@dimen/sp_16" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/clickToBindWechatAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_32"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:layout_marginRight="@dimen/dp_32"
+                    android:background="@drawable/round_cornor_24dp_bg"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/dp_12"
+                    android:paddingBottom="@dimen/dp_8"
+                    android:text="绑定微信"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

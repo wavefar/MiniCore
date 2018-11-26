@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.lq.cxy.shop.model.viewmodel.CartItemViewModel" />
+
+        <import type="org.wavefar.lib.utils.StringUtil" />
+
+        <import type="com.lq.cxy.shop.model.entity.CartItemEntity" />
+
+        <variable
+            name="cartItemViewModel"
+            type="com.lq.cxy.shop.model.viewmodel.CartItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_8"
+        binding:onClickCommand="@{cartItemViewModel.cartItemClicked}" >
+
+        <CheckBox
+            android:id="@+id/cart_item_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:button="@drawable/cart_item_selector"
+            android:checked="@{cartItemViewModel.cartItem.itemSeleted}"
+            android:gravity="center"
+            binding:onCheckedChangedCommand="@{cartItemViewModel.itemCheckStateChange}" />
+
+        <ImageView
+            android:id="@+id/cart_item_goods_img"
+            android:layout_width="@dimen/dp_72"
+            android:layout_height="@dimen/dp_72"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_toRightOf="@+id/cart_item_checkbox"
+            android:foregroundGravity="center"
+            android:scaleType="centerCrop"
+            binding:url="@{cartItemViewModel.cartItem.avatar}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/cart_item_goods_img"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_toRightOf="@+id/cart_item_goods_img"
+            android:maxLines="2"
+            android:text="@{cartItemViewModel.cartItem.goodsName}"
+            android:textSize="@dimen/sp_16" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/cart_item_goods_img"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_toRightOf="@+id/cart_item_goods_img"
+            android:text="@{StringUtil.formatSignMoney(cartItemViewModel.cartItem.price)}"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/sp_12" />
+
+        <ImageView
+            android:id="@+id/cart_item_add_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/cart_item_goods_img"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_8"
+            android:clickable="true"
+            android:focusable="true"
+            android:foregroundGravity="center"
+            android:scaleType="center"
+            android:src="@drawable/plus_dark_black"
+            binding:onClickCommand="@{cartItemViewModel.addOneToCart}" />
+
+        <TextView
+            android:id="@+id/cart_item_num_tv"
+            android:layout_width="@dimen/dp_32"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/cart_item_add_one"
+            android:layout_alignBottom="@+id/cart_item_add_one"
+            android:layout_marginRight="@dimen/dp_8"
+            android:layout_toLeftOf="@+id/cart_item_add_one"
+            android:gravity="center"
+            android:text="@{String.valueOf(cartItemViewModel.cartItem.num)}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_14"
+            binding:onClickCommand="@{cartItemViewModel.changeNumOfCart}" />
+
+        <ImageView
+            android:id="@+id/cart_item_minus_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/cart_item_add_one"
+            android:layout_alignBottom="@+id/cart_item_add_one"
+            android:layout_marginRight="@dimen/dp_8"
+            android:layout_toLeftOf="@+id/cart_item_num_tv"
+            android:foregroundGravity="center"
+            android:scaleType="center"
+            android:src="@{cartItemViewModel.cartItem.num > 1 ? @drawable/minus_dark_black: @drawable/minus_gray}"
+            binding:onClickCommand="@{cartItemViewModel.deleteOneFromCart}" />
+    </RelativeLayout>
+</layout>

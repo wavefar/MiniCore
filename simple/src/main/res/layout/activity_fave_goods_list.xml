@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="org.wavefar.lib.binding.viewadapter.recyclerview.LineManagers" />
+
+        <import type="com.lq.cxy.shop.model.viewmodel.FavGoodsListViewModel" />
+
+        <variable
+            name="favListViewModel"
+            type="com.lq.cxy.shop.model.viewmodel.FavGoodsListViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/goods_fav_head_root"
+            layout="@layout/head_layout"/>
+
+        <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+            android:id="@+id/goodsFavRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            binding:onLoadMoreCommand="@{favListViewModel.onLoadMoreCommand}"
+            binding:onRefreshCommand="@{favListViewModel.onRefreshCommand}"
+            binding:tr_head_height="80dp"
+            binding:tr_wave_height="80dp">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                binding:adapter="@{favListViewModel.adapter}"
+                binding:itemBinding="@{favListViewModel.itemBinding}"
+                binding:items="@{favListViewModel.observableList}"
+                binding:layoutManager="@{LayoutManagers.grid(2)}" />
+
+        </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+    </LinearLayout>
+</layout>

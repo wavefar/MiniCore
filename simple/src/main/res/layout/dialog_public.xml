@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            android:layout_alignParentLeft="true"
+            android:text="@string/cancel"
+            android:textColor="@color/color_111111"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tv_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:padding="@dimen/dp_10"
+            android:text="@string/ok"
+            android:textColor="@color/color_111111"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divder"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="#e0e0e0" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <com.lq.cxy.shop.widget.spinnerwheel.WheelVerticalView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:selectionDivider="@drawable/time_divider"
+            app:selectionDividerHeight="1dp" />
+    </LinearLayout>
+
+</LinearLayout>

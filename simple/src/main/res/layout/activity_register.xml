@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
+
+    <include layout="@layout/toolbar_main" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="35dp"
+        android:background="@android:color/transparent"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/phone_tv"
+            style="@style/BaseTextView"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|right"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="手机号"
+            android:textColor="#111111"
+            android:textSize="15sp" />
+
+        <org.wavefar.lib.ui.widget.ClearEditText
+            android:id="@+id/phone_et"
+            style="@style/input_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/phone_tv"
+            android:layout_alignTop="@+id/phone_tv"
+            android:layout_toRightOf="@+id/phone_tv"
+            android:background="@null"
+            android:hint="请输入手机号"
+            android:textSize="15sp"
+            android:maxLength="11"
+            android:textColorHint="#bbbbbb"
+            android:textColor="#111111"
+            android:inputType="phone" />
+
+        <include
+            android:id="@+id/line"
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/phone_tv"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            layout="@layout/public_line_divider" />
+
+        <TextView
+            android:id="@+id/code_tv"
+            style="@style/BaseTextView"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line"
+            android:gravity="center_vertical|right"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="验证码"
+            android:textColor="#111111"
+            android:textSize="15sp" />
+
+        <include
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/code_tv"
+            android:layout_alignTop="@+id/code_tv"
+            android:layout_toRightOf="@+id/code_tv"
+            layout="@layout/verifycode" />
+
+        <include
+            android:id="@+id/line1"
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/code_tv"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            layout="@layout/public_line_divider" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/saveBtn"
+        style="@style/BaseTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/shape_btn"
+        android:gravity="center"
+        android:text="下一步"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+</LinearLayout>

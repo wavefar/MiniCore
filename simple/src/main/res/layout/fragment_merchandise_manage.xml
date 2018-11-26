@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="org.wavefar.lib.binding.viewadapter.recyclerview.LineManagers" />
+
+        <import type="com.lq.cxy.shop.model.viewmodel.MerchandiseFragViewModel" />
+
+        <variable
+            name="listVm"
+            type="com.lq.cxy.shop.model.viewmodel.MerchandiseFragViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.merchant.MerchandiseManageFrag">
+
+        <include
+            android:id="@+id/merchandiseHeadRoot"
+            layout="@layout/head_layout" />
+
+        <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+            android:id="@+id/merchandiseRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/merchandiseHeadRoot"
+            binding:onLoadMoreCommand="@{listVm.onLoadMoreCommand}"
+            binding:onRefreshCommand="@{listVm.onRefreshCommand}"
+            binding:tr_head_height="80dp"
+            binding:tr_wave_height="80dp">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                binding:adapter="@{listVm.adapter}"
+                binding:itemBinding="@{listVm.vmMerGoods}"
+                binding:items="@{listVm.merchandiseGoodsListObservable}"
+                binding:layoutManager="@{LayoutManagers.linear()}"
+                binding:lineManager="@{LineManagers.horizontal()}" />
+
+        </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+    </RelativeLayout>
+</layout>

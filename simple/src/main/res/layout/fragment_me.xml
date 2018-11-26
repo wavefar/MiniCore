@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#F0EEE7"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar_main" />
+
+        <TextView
+            android:id="@+id/profile_tv"
+            style="@style/BaseTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white"
+            android:drawableLeft="@drawable/ic_profile"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/select_arrow"
+            android:text="个人信息"
+            android:textColor="#333333" />
+
+        <TextView
+            android:id="@+id/myorder_tv"
+            style="@style/BaseTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0.5dp"
+            android:background="@android:color/white"
+            android:drawableLeft="@drawable/ic_myorder"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/select_arrow"
+            android:text="我的订单"
+            android:textColor="#333333" />
+
+        <TextView
+            android:id="@+id/myshipaddress_tv"
+            style="@style/BaseTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0.5dp"
+            android:background="@android:color/white"
+            android:drawableLeft="@drawable/ic_myadr"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/select_arrow"
+            android:text="收货地址"
+            android:textColor="#333333" />
+
+        <TextView
+            android:id="@+id/myjifen_tv"
+            style="@style/BaseTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0.5dp"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/ic_jifen"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/select_arrow"
+            android:visibility="gone"
+            android:text="我的积分"
+            android:textColor="#333333" />
+        <TextView
+            android:id="@+id/mymark_tv"
+            style="@style/BaseTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_1"
+            android:background="@android:color/white"
+            android:drawableLeft="@drawable/ic_mymark"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/select_arrow"
+            android:text="我的收藏"
+            android:textColor="#333333" />
+
+        <TextView
+            android:id="@+id/mywallet_tv"
+            style="@style/BaseTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:drawableLeft="@drawable/ic_wallet"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/select_arrow"
+            android:text="押金管理"
+            android:textColor="#333333" />
+
+        <TextView
+            android:id="@+id/mysaler_tv"
+            style="@style/BaseTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:drawableLeft="@drawable/ic_mysaler"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/select_arrow"
+            android:text="我的店铺"
+            android:textColor="#333333" />
+
+    </LinearLayout>
+
+
+</ScrollView>

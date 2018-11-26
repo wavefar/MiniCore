@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/deposit_paid"
+        android:title="已支付" />
+    <item
+        android:id="@+id/deposit_wait_payback"
+        android:title="待退款" />
+    <item
+        android:id="@+id/deposit_have_back"
+        android:title="已退款" />
+</menu>

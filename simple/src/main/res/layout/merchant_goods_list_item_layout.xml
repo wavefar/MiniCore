@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.lq.cxy.shop.model.viewmodel.MerchandiseFragItemViewModel" />
+
+        <import type="org.wavefar.lib.utils.StringUtil" />
+
+        <import type="com.lq.cxy.shop.model.entity.ProductEntity" />
+
+        <import type="com.lq.cxy.shop.Constant" />
+
+        <import type="android.view.View" />
+
+        <import type="com.lq.cxy.shop.utils.Util" />
+
+        <variable
+            name="vmMerGoods"
+            type="com.lq.cxy.shop.model.viewmodel.MerchandiseFragItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(v)->vmMerGoods.listener.clickToEditProduct(v,vmMerGoods.item)}"
+        android:padding="@dimen/dp_8">
+
+        <ImageView
+            android:id="@+id/merchantGoodsImg"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="@dimen/dp_120"
+            android:scaleType="centerCrop"
+            binding:url="@{vmMerGoods.item.avatar}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/merchantGoodsImg"
+            android:layout_alignTop="@+id/merchantGoodsImg"
+            android:background="@android:color/transparent"
+            android:padding="@dimen/dp_4"
+            android:shadowColor="@color/black"
+            android:shadowRadius="4"
+            android:text="@{vmMerGoods.item.getStatusStr()}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/merchantGoodsImg"
+            android:layout_alignBottom="@+id/merchantGoodsImg"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_toRightOf="@+id/merchantGoodsImg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/merchantGoodsName"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="@{vmMerGoods.item.goodsName}" />
+
+            <TextView
+                android:id="@+id/merchantGoodsRemark"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:ellipsize="end"
+                android:text="@{vmMerGoods.item.remark}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/merchantGoodsPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorAccent"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="@{StringUtil.formatSignMoney(vmMerGoods.item.price)}" />
+
+                <TextView
+                    android:id="@+id/merchantGoodsCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="@{vmMerGoods.item.goodsCode}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/merchantGoodsStock"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="@{String.valueOf(vmMerGoods.item.stock)}" />
+
+                <TextView
+                    android:id="@+id/merchantGoodsCate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text='@{Util.getCategoryNameBaseId(vmMerGoods.item.categoryId)}' />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/merchantGoodsRemoveFromStock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/merchantGoodsImg"
+            android:layout_marginRight="@dimen/dp_12"
+            android:layout_toLeftOf="@+id/merchantGoodsDelete"
+            android:background="@drawable/round_cornor_24dp_bg"
+            android:onClick="@{(v)->vmMerGoods.listener.clickRemoveFromStock(v,vmMerGoods.item)}"
+            android:paddingLeft="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_4"
+            android:paddingRight="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_4"
+            android:text="下架"
+            android:textColor="@color/white"
+            android:visibility="@{vmMerGoods.item.goodStatus == 1? View.VISIBLE:View.GONE}" />
+
+        <TextView
+            android:id="@+id/merchantGoodsDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/merchantGoodsImg"
+            android:layout_marginRight="@dimen/dp_12"
+            android:layout_toLeftOf="@+id/merchantGoodsEditBtn"
+            android:background="@drawable/round_cornor_24dp_bg"
+            android:onClick="@{(v)->vmMerGoods.listener.clickDelete(v,vmMerGoods.item)}"
+            android:paddingLeft="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_4"
+            android:paddingRight="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_4"
+            android:text="刪除"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/merchantGoodsEditBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/merchantGoodsImg"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/round_cornor_24dp_bg"
+            android:onClick="@{(v)->vmMerGoods.listener.clickToEditProduct(v,vmMerGoods.item)}"
+            android:paddingLeft="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_4"
+            android:paddingRight="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_4"
+            android:text="编辑"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+</layout>

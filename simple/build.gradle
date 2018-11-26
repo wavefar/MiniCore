@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.1'
+    defaultConfig {
+        applicationId "com.lq.cxy.shop"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "v1.0.0"
+        flavorDimensions "versionCode"
+        multiDexEnabled true
+        dataBinding {
+            enabled true
+        }
+        manifestPlaceholders = [
+                UMENG_APPKEY: '5b88acc6f29d981519000145',
+                JPUSH_APPKEY: '751dc0e8c10451106d0a8a50',
+                BAIDU_APPKEY: 'uURs86bVsVV8D4NXGLbcIPbVeT3omWxv'
+        ]
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+    }
+    signingConfigs {
+        debug {
+            storeFile file("../release.keystore")
+            storePassword "*******"
+            keyAlias "xia"
+            keyPassword "*******"
+        }
+        release {
+            storeFile file("../release.keystore")
+            storePassword "*******"
+            keyAlias "xia"
+            keyPassword "*******"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    productFlavors {
+        //测试环境
+        flavors_dev {
+            applicationId "com.lq.cxy.shop"
+            manifestPlaceholders = [APP_NAME: '万家商城', ICON: '@mipmap/ic_launcher']
+            buildConfigField("String", "HOST", "\"http://118.126.113.73:8081\"")
+        }
+        //生产环境
+        flavors_release {
+            applicationId "com.lq.cxy.shop.release"
+            manifestPlaceholders = [APP_NAME: '万家商城', ICON: '@mipmap/ic_launcher']
+            buildConfigField("String", "HOST", "\"http://118.126.113.73:8081\"")
+        }
+    }
+}
+
+repositories {
+
+    jcenter()
+}
+
+dependencies {
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //ui
+    implementation('com.github.JakeWharton:ViewPagerIndicator:2.4.1')
+//{ exclude group: 'android.support.v4.accessibilityservice' }
+
+    //umeng
+    implementation 'com.umeng.sdk:common:1.5.3'
+    implementation 'com.umeng.sdk:analytics:7.5.3'
+
+    implementation 'com.yuyh.imgsel:library:2.0.5'
+    implementation 'com.contrarywind:Android-PickerView:4.1.6'
+    implementation 'liji.library.dev:citypickerview:3.1.13'
+    //common
+    api project(':mini-core')
+}

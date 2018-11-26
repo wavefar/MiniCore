@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--填写你要所要申请访问的目录地址，name最好是你的目录名，path是你要申请的目录-->
+    <external-path name="camera_photos" path="."  />
+    <external-path name="cache" path="Android/data/${applicationId}/cache" />
+    <external-path name="images" path="Pictures/" />
+    <external-path name="dcim" path="DCIM/" />
+</paths>

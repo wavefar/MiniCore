@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <import type="org.wavefar.lib.utils.StringUtil"/>
+        <variable
+            name="productEntity"
+            type="com.lq.cxy.shop.model.entity.ProductEntity" />
+        <variable
+            name="listener"
+            type="com.lq.cxy.shop.adapter.OnItemClickListener"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:onClick="@{() -> listener.onItemClick(productEntity)}"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:background="@color/gray"
+            binding:url="@{productEntity.avatar}" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/BaseTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:gravity="left"
+            android:text="@{productEntity.goodsName}" />
+
+        <TextView
+            android:id="@+id/price_tv"
+            android:singleLine="true"
+            android:gravity="left"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{StringUtil.formatSignMoney(productEntity.price)}" />
+
+    </LinearLayout>
+</layout>

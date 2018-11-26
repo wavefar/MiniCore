@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="org.wavefar.lib.utils.StringUtil" />
+
+        <variable
+            name="productEntity"
+            type="com.lq.cxy.shop.model.entity.ProductEntity" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+        <ImageView
+            android:id="@+id/product_logo_iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/gray"
+            binding:url="@{productEntity.avatar}"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/titleTv"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/product_logo_iv"
+            android:gravity="center_vertical"
+            android:lines="2"
+            android:text="@{productEntity.goodsName}"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/priceTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/product_logo_iv"
+            android:layout_alignLeft="@+id/titleTv"
+            android:gravity="center_vertical"
+            android:text="@{StringUtil.formatSignMoney(productEntity.price)}"
+            android:textColor="#dc1313"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/productNumTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/priceTv"
+            android:layout_alignRight="@+id/titleTv"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@{@string/productNumTv(productEntity.num)}"
+            android:textColor="#262626"
+            android:textSize="13sp" />
+
+
+
+    </RelativeLayout>
+</layout>

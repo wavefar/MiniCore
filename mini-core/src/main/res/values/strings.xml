@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">common</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="permission_rationale_message">您拒绝了我们申请授权，请同意授权，否则该功能不能正常使用！</string>
+    <string name="permission_denied_forever_message">我们需要一些您拒绝的权限或系统应用失败，请手动设置到页面授权，否则功能不能正常使用！</string>
+</resources>

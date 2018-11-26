@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.lq.cxy.shop.model.viewmodel.OrderConfirmViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.lq.cxy.shop.model.viewmodel.OrderConfirmViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="org.wavefar.lib.binding.viewadapter.recyclerview.LineManagers" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar_main" />
+
+        <TextView
+            style="@style/BaseTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.showDateTime}"
+            android:visibility="@{viewModel.mOrderEntity.getDisDate()!= null ? View.VISIBLE : View.GONE}" />
+        <TextView
+            style="@style/BaseTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E8E8E8"
+            android:text="配送方式：" />
+
+        <RadioGroup
+            android:id="@+id/dis_type_rg"
+            style="@style/BaseTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/yj_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:tag="0"
+                android:text="邮寄"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/ziti_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tag="1"
+                android:visibility="gone"
+                android:text="自提"
+                android:textSize="12sp" />
+        </RadioGroup>
+        <include layout="@layout/address_item"  android:id="@+id/address_rl"/>
+
+        <CheckBox
+            android:id="@+id/wallpay_cb"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="钱包余额支付(--)"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/BaseTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E8E8E8"
+            android:text="支付方式：" />
+
+        <RadioGroup
+            android:id="@+id/pay_method_rg"
+            style="@style/BaseTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/mpay_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:tag="mpay"
+                android:text="在线支付"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/ext_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tag="EXT_COD"
+                android:visibility="gone"
+                android:text="线下支付"
+                android:textSize="12sp" />
+        </RadioGroup>
+
+        <TextView
+            style="@style/BaseTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E8E8E8"
+            android:text="商品清单：" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            binding:adapter="@{viewModel.adapter}"
+            binding:itemBinding="@{viewModel.itemBinding}"
+            binding:items="@{viewModel.observableList}"
+            binding:layoutManager="@{LayoutManagers.linear()}"
+            binding:lineManager="@{LineManagers.horizontal()}"/>
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#E8E8E8"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/total_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text='@{viewModel.showTotalMoney}'
+                android:textColor="#dc1313" />
+
+            <Button
+                android:id="@+id/save_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_btn"
+                android:paddingBottom="0dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="0dp"
+                android:text="确认"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

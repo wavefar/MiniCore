@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/goods_top_introduction"
+        android:title="商品" />
+    <item
+        android:id="@+id/goods_top_detail"
+        android:title="详情" />
+    <item
+        android:id="@+id/goods_top_assess"
+        android:title="评价" />
+</menu>

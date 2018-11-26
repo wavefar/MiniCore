@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_main" />
+
+    <RelativeLayout
+        android:id="@+id/avatarRl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@color/color_ffffff"
+        android:gravity="center_vertical"
+        android:padding="@dimen/dp_18">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawablePadding="5dp"
+            android:text="@string/avatar_str"
+            android:textColor="@color/setting_tvRigthColor" />
+
+        <org.wavefar.lib.ui.widget.imageview.CircularImage
+            android:id="@+id/avatarIv"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/photo_circle_bg"
+            android:drawablePadding="@dimen/dp_10" />
+    </RelativeLayout>
+    <include layout="@layout/public_line_divider" />
+
+    <RelativeLayout
+        android:id="@+id/nameRl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_ffffff"
+        android:padding="@dimen/dp_18">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="@string/name_str"
+            android:textColor="@color/setting_tvRigthColor" />
+
+        <TextView
+            android:id="@+id/nameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableRight="@drawable/select_arrow"
+            android:text="暂未设置"
+            android:textColor="@color/setting_tvRigthColor" />
+    </RelativeLayout>
+    <include layout="@layout/public_line_divider" />
+
+    <RelativeLayout
+        android:id="@+id/sexRl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_ffffff"
+        android:padding="@dimen/dp_18">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="@string/sex_str"
+            android:textColor="@color/setting_tvRigthColor" />
+
+        <TextView
+            android:id="@+id/sexTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawablePadding="@dimen/dp_10"
+            android:drawableRight="@drawable/select_arrow"
+            android:text="@string/sex_value_str"
+            android:textColor="@color/setting_tvRigthColor" />
+    </RelativeLayout>
+    <include layout="@layout/public_line_divider" />
+    <Button
+        android:id="@+id/saveBtn"
+        style="@style/BaseTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_btn"
+        android:gravity="center"
+        android:text="@string/save_btn_str"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+</LinearLayout>

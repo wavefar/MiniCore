@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#D81B60</color>
+    <color name="colorPrimaryDark">#00574B</color>
+
+    <color name="iv_back_uncheck">#D81B33</color>
+    <color name="iv_back_check">#D81B60</color>
+
+    <color name="colorAccent">@color/iv_back_uncheck</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_00a3ff">#00a3ff</color>
+    <color name="color_ffffff">#ffffff</color>
+    <color name="color_bbbbbb">#bbbbbb</color>
+    <color name="color_111111">#111111</color>
+    <color name="color_666666">#666666</color>
+    <color name="color_99daff">#99daff</color>
+    <color name="color_c8c8c8">#c8c8c8</color>
+    <color name="color_c3c3c3">#c3c3c3</color>
+    <color name="color_cccccc">#cccccc</color>
+    <color name="color_dddddd">#dddddd</color>
+    <color name="color_888888">#888888</color>
+
+    <color name="textColor">#202020</color>
+    <color name="textColorHint">#A0A0A0</color>
+    <color name="textColorVice">#6C6C6C</color>
+    <color name="viewLineColor">#F0F0F0</color>
+
+    <color name="gray">#858585</color>
+    <color name="color_black">#000000</color>
+    <color name="color_white">#ffffff</color>
+
+    <color name="bottom_tab_textcolor_normal">#ffaaaaaa</color>
+    <color name="bottom_tab_textcolor_selected">@color/iv_back_uncheck</color>
+
+    <color name="setting_tvRigthColor">#333333</color>
+    <color name="setting_tvLeftColor">#888888</color>
+</resources>

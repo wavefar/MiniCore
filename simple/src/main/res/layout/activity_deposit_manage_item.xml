@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.lq.cxy.shop.model.viewmodel.MerchantDepositItemViewModel" />
+
+        <import type="com.lq.cxy.shop.model.entity.DepositEntity" />
+
+        <import type="org.wavefar.lib.utils.StringUtil" />
+
+        <import type="java.util.HashMap" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.lq.cxy.shop.model.viewmodel.MerchantDepositItemViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:binding="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/dp_8"
+        android:paddingBottom="@dimen/dp_8">
+
+        <ImageView
+            android:id="@+id/depositIcon"
+            android:layout_width="@dimen/dp_72"
+            android:layout_height="@dimen/dp_72"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:foregroundGravity="center"
+            android:scaleType="centerCrop"
+            binding:url="@{vm.item.avatar}" />
+
+        <TextView
+            android:id="@+id/depositUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/depositIcon"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_toRightOf="@+id/depositIcon"
+            android:maxLines="2"
+            android:text="@{vm.item.loginName}"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:layout_marginTop="@dimen/dp_4"
+            android:id="@+id/depositPayType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/depositUserName"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_toRightOf="@+id/depositIcon"
+            android:text="@{vm.item.name}"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/depositUserName"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_toRightOf="@+id/depositPayType"
+            android:text="@{StringUtil.formatSignMoney(vm.item.money)}"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/sp_12" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/depositPayType"
+            android:layout_alignBottom="@+id/depositIcon"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/dp_8"
+                android:background="@color/gray"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp_8"
+                android:paddingRight="@dimen/dp_8"
+                android:text="@{DepositEntity.ORDER_STATUS_MAP.get(vm.item.orderStatus)}"
+                android:textColor="@color/white"
+                android:visibility="@{vm.item.orderStatus != 3?View.VISIBLE:View.GONE}" />
+
+            <TextView
+                android:id="@+id/clickToBackDeposit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/dp_8"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:onClick="@{(v)->vm.onclickBackDeposit(v)}"
+                android:paddingLeft="@dimen/dp_8"
+                android:paddingRight="@dimen/dp_8"
+                android:text="退款"
+                android:textColor="@color/white"
+                android:visibility="@{vm.item.orderStatus == 3? View.VISIBLE:View.GONE}" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

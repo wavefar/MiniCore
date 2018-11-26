@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--tab标签-->
+    <string-array name="tabs">
+        <item>生活服务</item>
+        <item>特产</item>
+        <item>购物车</item>
+        <item>个人中心</item>
+    </string-array>
+
+    <string-array name="tabs_merchant">
+        <item>订单管理</item>
+        <item>商品管理</item>
+        <item>销量统计</item>
+        <item>商铺中心</item>
+    </string-array>
+</resources>

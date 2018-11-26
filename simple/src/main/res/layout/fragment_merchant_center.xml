@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#F0EEE7"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/toolbar_main" />
+
+            <TextView
+                android:id="@+id/my_license_info"
+                style="@style/BaseTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.5dp"
+                android:background="@android:color/white"
+                android:drawableLeft="@drawable/ic_profile"
+                android:drawableRight="@drawable/select_arrow"
+                android:drawablePadding="10dp"
+                android:text="工商信息"
+                android:textColor="#333333" />
+
+            <TextView
+                android:id="@+id/profile_tv"
+                style="@style/BaseTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:drawableLeft="@drawable/ic_mysaler"
+                android:drawableRight="@drawable/select_arrow"
+                android:drawablePadding="10dp"
+                android:text="店铺信息"
+                android:textColor="#333333" />
+
+            <TextView
+                android:id="@+id/orderAssessManage"
+                style="@style/BaseTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.5dp"
+                android:background="@android:color/white"
+                android:drawableLeft="@drawable/ic_myorder"
+                android:drawableRight="@drawable/select_arrow"
+                android:drawablePadding="10dp"
+                android:text="评价管理"
+                android:textColor="#333333" />
+
+
+            <TextView
+                android:id="@+id/fundManageBtn"
+                style="@style/BaseTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0.5dp"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/ic_jifen"
+                android:drawableRight="@drawable/select_arrow"
+                android:drawablePadding="10dp"
+                android:text="@string/merchant_fund_manage_title"
+                android:textColor="#333333" />
+
+            <TextView
+                android:id="@+id/merPayWayAccount"
+                style="@style/BaseTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:drawableLeft="@drawable/ic_wallet"
+                android:drawableRight="@drawable/select_arrow"
+                android:drawablePadding="10dp"
+                android:text="提现账号"
+                android:textColor="#333333" />
+
+            <TextView
+                android:id="@+id/merDepositManage"
+                style="@style/BaseTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:drawableLeft="@drawable/ic_mysaler"
+                android:drawableRight="@drawable/select_arrow"
+                android:drawablePadding="10dp"
+                android:text="押金管理"
+                android:textColor="#333333" />
+
+
+            <TextView
+                android:id="@+id/mymark_tv"
+                style="@style/BaseTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:background="@android:color/white"
+                android:drawableLeft="@drawable/ic_mymark"
+                android:drawableRight="@drawable/select_arrow"
+                android:drawablePadding="10dp"
+                android:text="我的收藏"
+                android:textColor="#333333"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</layout>

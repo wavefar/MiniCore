@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:actionBarSize"
+    android:background="@color/colorAccent"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:id="@+id/head_back_root"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp_14" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/head_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/sp_14" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dp_8"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/head_more"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:foregroundGravity="center"
+            android:src="@drawable/head_more" />
+
+        <TextView
+            android:id="@+id/head_right_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_12"
+            android:paddingRight="@dimen/dp_12"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp_14"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:state_pressed="true">
+        <shape>
+           <!-- 边缘线条颜色 -->
+           <stroke android:width="0dp"
+               android:color="@color/iv_back_uncheck" />
+           <!-- 圆角的幅度 -->
+           <corners android:radius="4dp" />
+           <!-- 内部颜色 -->
+           <solid android:color="@color/iv_back_uncheck" />
+        </shape>
+    </item>
+    <item android:state_focused="true">
+      <shape>
+           <!-- 边缘线条颜色 -->
+           <stroke android:width="0dp"
+               android:color="@color/iv_back_uncheck" />
+           <!-- 圆角的幅度 -->
+           <corners android:radius="4dp" />
+           <!-- 内部颜色 -->
+           <solid android:color="@color/iv_back_uncheck" />
+       </shape>
+    </item>
+    <item android:state_selected="true">
+      <shape>
+           <!-- 边缘线条颜色 -->
+           <stroke android:width="0dp"
+               android:color="@color/iv_back_uncheck" />
+           <!-- 圆角的幅度 -->
+           <corners android:radius="4dp" />
+           <!-- 内部颜色 -->
+           <solid android:color="@color/iv_back_uncheck" />
+      </shape>
+    </item>
+    <item>
+        <shape>
+           <!-- 边缘线条颜色 -->
+           <stroke android:width="0dp"
+               android:color="@color/iv_back_uncheck" />
+           <!-- 圆角的幅度 -->
+           <corners android:radius="4dp" />
+           <!-- 内部颜色 -->
+           <solid android:color="@color/iv_back_uncheck" />
+        </shape>
+   </item>
+</selector>

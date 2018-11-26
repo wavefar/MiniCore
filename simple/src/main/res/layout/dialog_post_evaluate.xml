@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        style="@style/BaseTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/plTv"
+            style="@style/BaseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pl_tv"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_16" />
+
+        <EditText
+            android:id="@+id/contextTv"
+            style="@style/BaseTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/plTv"
+            android:background="@drawable/shape_address_stroke"
+            android:gravity="left"
+            android:hint="@string/pl_tip"
+            android:lines="3"
+            android:maxLength="100"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/pfTv"
+            style="@style/BaseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contextTv"
+            android:text="@string/df_tv"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_16" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@style/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contextTv"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_toRightOf="@+id/pfTv"
+            android:numStars="5"
+            android:rating="0"
+            android:stepSize="1" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/public_line_divider" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_toLeftOf="@+id/tv_ok"
+            android:padding="@dimen/dp_10"
+            android:text="@string/cancel"
+            android:textColor="@color/color_111111"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tv_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:padding="@dimen/dp_10"
+            android:text="@string/ok"
+            android:textColor="@color/color_111111"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+</LinearLayout>

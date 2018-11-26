@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="org.wavefar.lib.utils.StringUtil" />
+
+        <variable
+            name="orderEntity"
+            type="com.lq.cxy.shop.model.entity.DepositEntity" />
+
+        <variable
+            name="listener"
+            type="com.lq.cxy.shop.model.viewmodel.DepositViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/BaseTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:singleLine="true"
+                android:text="@{@string/order_num(orderEntity.orderId)}" />
+
+            <TextView
+                style="@style/BaseTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end|center_vertical"
+                android:singleLine="true"
+                android:text="@{orderEntity.ORDER_STATUS_MAP.get(orderEntity.orderStatus)}" />
+        </LinearLayout>
+
+        <include layout="@layout/public_line_divider" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/BaseTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="@{orderEntity.storeName}" />
+
+            <TextView
+                style="@style/BaseTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:singleLine="true"
+                android:text="@{@string/deposit_money(StringUtil.formatSignMoney(orderEntity.money))}" />
+        </LinearLayout>
+
+        <include layout="@layout/public_line_divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_8"
+            android:visibility="@{orderEntity.orderStatus == 0 || orderEntity.orderStatus == 1 ? View.VISIBLE : View.GONE}">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_cornor_24dp_bg"
+                android:onClick="@{()-> listener.payOrder(orderEntity)}"
+                android:paddingBottom="8dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="8dp"
+                android:text="立即支付"
+                android:textColor="@android:color/white"
+                android:visibility="@{orderEntity.orderStatus == 0 ? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_cornor_24dp_bg"
+                android:onClick="@{()-> listener.refundDeposit(orderEntity)}"
+                android:paddingBottom="8dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="8dp"
+                android:text="退押金"
+                android:textColor="@android:color/white"
+                android:visibility="@{orderEntity.orderStatus == 1 ? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:background="@drawable/share_gray_stroke"
+                android:onClick="@{()-> listener.cancelOrder(orderEntity)}"
+                android:paddingBottom="8dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="8dp"
+                android:text="取消订单"
+                android:textColor="@android:color/black"
+                android:visibility="@{orderEntity.orderStatus == 0 ? View.VISIBLE : View.GONE}" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

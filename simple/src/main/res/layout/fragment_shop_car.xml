@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.lq.cxy.shop.model.viewmodel.CartCenterViewModel" />
+
+        <import type="org.wavefar.lib.utils.StringUtil" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="org.wavefar.lib.binding.viewadapter.recyclerview.LineManagers" />
+
+        <import type="android.view.View.OnClickListener" />
+
+        <import type="android.widget.CompoundButton.OnCheckedChangeListener" />
+
+        <variable
+            name="cartCenterViewModel"
+            type="com.lq.cxy.shop.model.viewmodel.CartCenterViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/shop_car_head_root"
+            layout="@layout/head_layout"/>
+
+        <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+            android:id="@+id/cartCenterRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            binding:onLoadMoreCommand="@{cartCenterViewModel.onLoadMoreCommand}"
+            binding:onRefreshCommand="@{cartCenterViewModel.onRefreshCommand}"
+            binding:tr_floatRefresh="true"
+            binding:tr_head_height="80dp"
+            binding:tr_wave_height="80dp">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                binding:adapter="@{cartCenterViewModel.adapter}"
+                binding:itemBinding="@{cartCenterViewModel.cartListItem}"
+                binding:items="@{cartCenterViewModel.cartListObserverable}"
+                binding:layoutManager="@{LayoutManagers.linear()}"
+                binding:lineManager="@{LineManagers.horizontal()}" />
+
+        </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8">
+
+            <CheckBox
+                android:id="@+id/cart_select_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:button="@drawable/cart_item_selector"
+                android:gravity="center"
+                android:onCheckedChanged="@{cartCenterViewModel}" />
+
+            <TextView
+                android:id="@+id/notice_all_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_4"
+                android:layout_toRightOf="@+id/cart_select_all"
+                android:text="全选" />
+
+            <TextView
+                android:id="@+id/notice_total_count_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_40"
+                android:layout_toRightOf="@+id/notice_all_select"
+                android:text="合计:" />
+
+            <TextView
+                android:id="@+id/total_selected_goods_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/notice_total_count_money"
+                android:text="@{StringUtil.formatSignMoney(cartCenterViewModel.totalMoneyObservable)}"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/sp_12" />
+
+            <TextView
+                android:id="@+id/go_to_ordering"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_40"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dp_12"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:onClickListener="@{cartCenterViewModel}"
+                android:text="@string/go_to_ordering"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_14" />
+        </RelativeLayout>
+
+        <include layout="@layout/public_line_divider"/>
+    </LinearLayout>
+</layout>

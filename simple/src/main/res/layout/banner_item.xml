@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/banner_rl"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#75000000"
+        android:gravity="center_vertical"
+        android:padding="3dip" >
+
+        <TextView
+            android:id="@+id/titleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:paddingRight="5dp"
+            android:layout_alignParentLeft="true"
+            android:singleLine="true"
+            android:layout_toLeftOf="@+id/viewflowindic"
+            android:text="广告title"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <org.wavefar.lib.ui.widget.pageindicator.CirclePageIndicator
+            android:id="@+id/viewflowindic"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center_horizontal"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
+            android:padding="2dip"
+            app:fillColor="#D0D3D8"
+            app:radius="4dip"
+            app:strokeColor="#48494D" />
+    </RelativeLayout>
+
+</FrameLayout>

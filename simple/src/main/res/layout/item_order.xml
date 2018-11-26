@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+<data>
+
+    <import type="android.view.View" />
+
+    <import type="org.wavefar.lib.utils.StringUtil" />
+
+    <variable
+        name="orderEntity"
+        type="com.lq.cxy.shop.model.entity.OrderEntity" />
+
+    <variable
+        name="listener"
+        type="com.lq.cxy.shop.model.viewmodel.OrderViewModel" />
+</data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_5"
+    android:layout_marginTop="@dimen/dp_5"
+    android:background="@color/white"
+    android:gravity="center"
+    android:onClick="@{() -> listener.onItemClick(orderEntity)}"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/BaseTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:singleLine="true"
+            android:text="@{@string/order_num(orderEntity.orderCode)}" />
+
+        <TextView
+            style="@style/BaseTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end|center_vertical"
+            android:singleLine="true"
+            android:text="@{orderEntity.ORDER_STATUS_MAP.get(orderEntity.status)}" />
+    </LinearLayout>
+
+    <include layout="@layout/public_line_divider" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/product_logo_iv"
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_70"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            binding:url="@{orderEntity.goods.get(0).avatar}"
+            android:background="@color/gray"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/titleTv"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/product_logo_iv"
+            android:gravity="center_vertical"
+            android:lines="2"
+            android:text="@{orderEntity.goods.get(0).goodsName}"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/priceTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/product_logo_iv"
+            android:layout_alignLeft="@+id/titleTv"
+            android:gravity="center_vertical"
+            android:text="@{StringUtil.formatSignMoney(orderEntity.goods.get(0).price)}"
+            android:textColor="#dc1313"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/productNumTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/priceTv"
+            android:layout_alignRight="@+id/titleTv"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@{@string/productNumTv(orderEntity.goods.get(0).num)}"
+            android:textColor="#262626"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/BaseTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="@{orderEntity.goods.get(0).storeName}" />
+
+        <TextView
+            style="@style/BaseTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:text="@{@string/order_money(StringUtil.formatSignMoney(orderEntity.money))}" />
+    </LinearLayout>
+
+    <include layout="@layout/public_line_divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_8"
+        android:visibility="@{orderEntity.status == 1 ? View.GONE : View.VISIBLE}">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_cornor_24dp_bg"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="8dp"
+            android:onClick="@{()-> listener.payOrder(orderEntity)}"
+            android:text="立即支付"
+            android:textColor="@android:color/white"
+            android:visibility="@{orderEntity.status == 0 ? View.VISIBLE : View.GONE}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:background="@drawable/share_gray_stroke"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="8dp"
+            android:text="取消订单"
+            android:onClick="@{()-> listener.cancelOrder(orderEntity)}"
+            android:textColor="@android:color/black"
+            android:visibility="@{orderEntity.status == 0 ? View.VISIBLE : View.GONE}" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:background="@drawable/share_gray_stroke"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="8dp"
+            android:text="查看物流"
+            android:onClick="@{()-> listener.myExpress(orderEntity)}"
+            android:textColor="@android:color/black"
+            android:visibility="@{(orderEntity.status == 3 &amp;&amp; null !=orderEntity.waybillId) ? View.VISIBLE : View.GONE}" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:background="@drawable/round_cornor_24dp_bg"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="8dp"
+            android:onClick="@{()-> listener.confirmOrder(orderEntity)}"
+            android:text="确定收货"
+            android:textColor="@android:color/white"
+            android:visibility="@{orderEntity.status == 3 ? View.VISIBLE : View.GONE}" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:background="@drawable/round_cornor_24dp_bg"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="8dp"
+            android:onClick="@{()-> listener.postEvaluate(orderEntity)}"
+            android:text="立即评价"
+            android:textColor="@android:color/white"
+            android:visibility="@{orderEntity.status == 4 ? View.VISIBLE : View.GONE}" />
+    </LinearLayout>
+
+</LinearLayout>
+</layout>

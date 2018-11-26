@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.lq.cxy.shop.model.viewmodel.MerchantFundItemViewModel" />
+
+        <import type="com.lq.cxy.shop.model.entity.OrderIncomeEntity" />
+
+        <import type="android.text.TextUtils" />
+
+        <import type="org.wavefar.lib.utils.StringUtil" />
+
+        <variable
+            name="vm"
+            type="com.lq.cxy.shop.model.viewmodel.MerchantFundItemViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_8"
+        android:paddingBottom="@dimen/dp_8">
+
+        <TextView
+            android:id="@+id/fundOrderId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@{vm.isIncome?@string/merchant_fund_type_format(vm.nameStr):@string/merchant_fund_name_format(vm.nameStr)}"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="金额： "
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/fundMoney"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{StringUtil.formatSignMoney(vm.money)}"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/sp_14" />
+    </LinearLayout>
+</layout>

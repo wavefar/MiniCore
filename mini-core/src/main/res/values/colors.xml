@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#393a3f</color>
+    <color name="colorPrimaryDark">#303135</color>
+    <color name="colorAccent">#1aad19</color>
+
+    <!--toolbar设置-->
+    <color name="iv_back_uncheck">#393a3f</color>
+    <color name="toolbar_bg">@color/iv_back_uncheck</color>
+    <color name="iv_back_check">#303135</color>
+
+    <color name="blue_color">#1B9AF7</color>
+    <color name="blue_color_light">#58b2f2</color>
+
+    <color name="colorPrimary_light_trsp" >#7b393a3f</color>
+
+    <color name="background_tab_pressed">#6633B5E5</color>
+</resources>

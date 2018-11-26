@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="org.wavefar.lib.binding.viewadapter.recyclerview.LineManagers" />
+
+        <import type="com.lq.cxy.shop.model.viewmodel.AddressListViewModel" />
+
+        <variable
+            name="addressManViewModel"
+            type="com.lq.cxy.shop.model.viewmodel.AddressListViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/address_head_root"
+            layout="@layout/head_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_44"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/addr_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/create_new_addr_root"
+            android:layout_below="@+id/address_head_root"
+            android:layout_marginTop="@dimen/dp_8"
+            binding:adapter="@{addressManViewModel.addressAdapter}"
+            binding:itemBinding="@{addressManViewModel.addressItem}"
+            binding:items="@{addressManViewModel.addressListObservable}"
+            binding:layoutManager="@{LayoutManagers.linear()}"
+            binding:lineManager="@{LineManagers.horizontal()}" />
+
+        <LinearLayout
+            android:id="@+id/create_new_addr_root"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_44"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginRight="@dimen/dp_24"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:background="@drawable/round_cornor_24dp_bg"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/add_white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="新建地址"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_14" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="org.wavefar.lib.binding.viewadapter.recyclerview.LineManagers" />
+
+        <import type="com.lq.cxy.shop.model.viewmodel.MerchantAssessReplyViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.lq.cxy.shop.model.viewmodel.MerchantAssessReplyViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.merchant.MerchantAssessListActivity">
+
+        <include layout="@layout/head_layout"
+            android:id="@+id/merchantReplyHeadRoot"/>
+
+        <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+            android:id="@+id/merchantReplyRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+            app:onRefreshCommand="@{viewModel.onRefreshCommand}"
+            app:tr_head_height="80dp"
+            app:tr_wave_height="80dp">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:adapter="@{viewModel.adapter}"
+                app:itemBinding="@{viewModel.itemBinding}"
+                app:items="@{viewModel.listObservable}"
+                app:layoutManager="@{LayoutManagers.linear()}"
+                app:lineManager="@{LineManagers.horizontal()}" />
+
+        </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:padding="@dimen/dp_10"
+            android:text="@string/cancel"
+            android:textColor="@color/color_111111"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tv_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:padding="@dimen/dp_10"
+            android:text="@string/ok"
+            android:textColor="@color/color_111111"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divder"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="#e0e0e0" />
+
+    <LinearLayout
+        style="@style/BaseTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/BaseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="品牌"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_16" />
+
+        <org.wavefar.lib.ui.widget.FlowLayout
+            android:id="@+id/brand_name_fl"
+            style="@style/BaseTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/BaseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数量"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_16" />
+
+        <org.wavefar.lib.ui.widget.CounterView
+            android:id="@+id/goods_num"
+            style="@style/BaseTextView"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="replyEntity"
+            type="com.lq.cxy.shop.model.entity.EvaluateEntity.ReplyEntity" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_dddddd"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_5">
+
+
+        <org.wavefar.lib.ui.widget.imageview.CircularImage
+            android:id="@+id/product_logo_iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/photo_circle_bg"
+            android:scaleType="centerCrop"
+            binding:url="@{replyEntity.fromCustomerAvatar}" />
+
+        <TextView
+            android:id="@+id/nameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/product_logo_iv"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_10"
+            android:singleLine="true"
+            android:text="@{replyEntity.fromCustomerName}"
+            android:textColor="#333333"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:text="@{replyEntity.createTime}"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <TextView
+            style="@style/BaseTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameTv"
+            android:layout_toRightOf="@+id/product_logo_iv"
+            android:gravity="left|center_vertical"
+            android:lines="2"
+            android:paddingBottom="0dp"
+            android:text="@{replyEntity.replyMsg}"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+</layout>

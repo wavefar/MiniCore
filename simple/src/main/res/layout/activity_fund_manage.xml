@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="org.wavefar.lib.binding.viewadapter.recyclerview.LineManagers" />
+
+        <import type="com.lq.cxy.shop.model.viewmodel.MerchantFundFragViewModel" />
+
+        <import type="org.wavefar.lib.utils.StringUtil" />
+
+        <variable
+            name="viewModel"
+            type="com.lq.cxy.shop.model.viewmodel.MerchantFundFragViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        tools:context=".fragment.merchant.MerchandiseManageFrag">
+
+        <include
+            android:id="@+id/fundHeadRoot"
+            layout="@layout/head_layout" />
+
+        <LinearLayout
+            android:id="@+id/noUseFund1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fundHeadRoot"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_8"
+                android:paddingBottom="@dimen/dp_8"
+                android:singleLine="true"
+                android:text="销售总额: " />
+
+            <TextView
+                android:id="@+id/remainMoney"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:paddingTop="@dimen/dp_8"
+                android:paddingBottom="@dimen/dp_8"
+                android:singleLine="true"
+                android:text="@{StringUtil.formatSignMoney(viewModel.total.get())}"
+                android:textColor="#dc1313" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_8"
+                android:paddingBottom="@dimen/dp_8"
+                android:singleLine="true"
+                android:text="冻结金额: " />
+
+            <TextView
+                android:id="@+id/yiTiXianJinE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:paddingTop="@dimen/dp_8"
+                android:paddingBottom="@dimen/dp_8"
+                android:singleLine="true"
+                android:text="@{StringUtil.formatSignMoney(viewModel.freze.get())}"
+                android:textColor="#dc1313" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/noUseFund2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/noUseFund1"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_8"
+                android:paddingBottom="@dimen/dp_8"
+                android:singleLine="true"
+                android:text="可提金额: " />
+
+            <TextView
+                android:id="@+id/keTiXianJinE"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:paddingTop="@dimen/dp_8"
+                android:paddingBottom="@dimen/dp_8"
+                android:singleLine="true"
+                android:text="@{StringUtil.formatSignMoney(viewModel.available.get())}"
+                android:textColor="#dc1313" />
+
+            <TextView
+                android:id="@+id/tiXianButton"
+                android:layout_width="@dimen/dp_124"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:onClick="@{(v)->viewModel.onClickToGetCash(v)}"
+                android:paddingTop="@dimen/dp_8"
+                android:paddingBottom="@dimen/dp_8"
+                android:singleLine="true"
+                android:text="提现"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_14" />
+        </LinearLayout>
+
+        <org.wavefar.lib.ui.widget.BottomNavigationViewEx
+            android:id="@+id/merchantFundManageNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/noUseFund2"
+            android:layout_marginTop="@dimen/dp_4"
+            android:background="@color/color_white"
+            app:itemIconTint="@color/bottom_tab_text_color"
+            app:itemTextColor="@color/bottom_tab_text_color"
+            app:menu="@menu/merchant_fund_detail_menu" />
+
+        <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+            android:id="@+id/merchantOrderRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/merchantFundManageNav"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8"
+            app:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+            app:onRefreshCommand="@{viewModel.onRefreshCommand}"
+            app:tr_head_height="56dp"
+            app:tr_wave_height="56dp">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:adapter="@{viewModel.adapter}"
+                app:itemBinding="@{viewModel.itemBinding}"
+                app:items="@{viewModel.listObservable}"
+                app:layoutManager="@{LayoutManagers.linear()}"
+                app:lineManager="@{LineManagers.horizontal()}" />
+
+        </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+
+    </RelativeLayout>
+</layout>

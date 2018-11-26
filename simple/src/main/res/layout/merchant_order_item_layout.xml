@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="org.wavefar.lib.utils.StringUtil" />
+
+        <import type="com.lq.cxy.shop.model.entity.OrderEntity" />
+
+        <import type="com.lq.cxy.shop.model.viewmodel.MerchantOrderItemViewModel" />
+
+        <variable
+            name="merchantOrderItemVm"
+            type="com.lq.cxy.shop.model.viewmodel.MerchantOrderItemViewModel" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:onClick="@{() -> merchantOrderItemVm.onItemClick()}"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_5"
+        android:paddingBottom="@dimen/dp_5">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/product_logo_iv"
+                android:layout_width="@dimen/dp_70"
+                android:layout_height="@dimen/dp_70"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/gray"
+                android:scaleType="centerCrop"
+                app:url="@{merchantOrderItemVm.itemEntity.goods.get(0).avatar}" />
+
+            <TextView
+                android:id="@+id/titleTv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/product_logo_iv"
+                android:gravity="center_vertical"
+                android:lines="2"
+                android:text="@{merchantOrderItemVm.itemEntity.goods.get(0).goodsName}"
+                android:textColor="#333333"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/priceTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/titleTv"
+                android:layout_alignBottom="@+id/product_logo_iv"
+                android:gravity="center_vertical"
+                android:text="@{StringUtil.formatSignMoney(merchantOrderItemVm.itemEntity.goods.get(0).price)}"
+                android:textColor="#dc1313"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/productNumTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/titleTv"
+                android:layout_alignBottom="@+id/priceTv"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@{@string/merchant_order_product_num_format(merchantOrderItemVm.itemEntity.goods.get(0).num)}"
+                android:textColor="#262626"
+                android:textSize="13sp" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/BaseTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:text="@{@string/order_num(merchantOrderItemVm.itemEntity.orderCode)}"
+                android:textSize="@dimen/sp_12" />
+
+            <TextView
+                style="@style/BaseTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="#dc1313"
+                android:text="@{@string/order_money(StringUtil.formatSignMoney(merchantOrderItemVm.itemEntity.money))}" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

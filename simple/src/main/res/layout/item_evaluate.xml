@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+        <import type="org.wavefar.lib.binding.viewadapter.recyclerview.LineManagers" />
+
+        <variable
+            name="evaluateEntity"
+            type="com.lq.cxy.shop.model.entity.EvaluateEntity" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+        <org.wavefar.lib.ui.widget.imageview.CircularImage
+            android:id="@+id/product_logo_iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/photo_circle_bg"
+            android:scaleType="centerCrop"
+            binding:url="@{evaluateEntity.avatar}" />
+
+        <TextView
+            android:id="@+id/nameTv"
+            android:paddingLeft="@dimen/dp_10"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/product_logo_iv"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="@{evaluateEntity.name}"
+            android:textColor="#333333"
+            android:textSize="15sp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@style/ratingBar"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/product_logo_iv"
+            android:layout_below="@+id/nameTv"
+            android:layout_centerVertical="true"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="@{evaluateEntity.star}" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameTv"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:text="@{evaluateEntity.createTime}"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/evaluateTv"
+            style="@style/BaseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/product_logo_iv"
+            android:layout_below="@+id/ratingBar"
+            android:gravity="center_vertical"
+            android:lines="2"
+            android:text="@{evaluateEntity.evaluate}"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@+id/evaluateTv"
+            android:layout_alignLeft="@+id/evaluateTv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            binding:itemBinding="@{evaluateEntity.replyItem}"
+            binding:items="@{evaluateEntity.reply}"
+            binding:layoutManager="@{LayoutManagers.linear()}"
+            binding:lineManager="@{LineManagers.horizontal()}" />
+
+    </RelativeLayout>
+</layout>

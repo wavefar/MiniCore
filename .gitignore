@@ -1,0 +1,15 @@
+/*/*/bin
+/*/*/gen
+/*/*/.settings
+/*/*.iml
+.idea
+build?
+gradle
+local.properties?
+*.iml?
+/.gradle
+.DS_Store
+.DS_Store?
+/build
+/captures
+.externalNativeBuild

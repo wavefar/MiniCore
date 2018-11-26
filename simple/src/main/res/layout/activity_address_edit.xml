@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/address_edit_head_root"
+            layout="@layout/head_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_44" />
+
+        <TextView
+            android:id="@+id/notice_receiver_username"
+            style="@style/address_edit_notice_style"
+            android:layout_below="@+id/address_edit_head_root"
+            android:text="@string/receive_username_str" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/receive_addr_username"
+            style="@style/address_edit_style"
+            android:singleLine="true"
+            android:layout_below="@+id/notice_receiver_username" />
+
+        <TextView
+            android:id="@+id/notice_receiver_phone"
+            style="@style/address_edit_notice_style"
+            android:layout_below="@+id/receive_addr_username"
+            android:text="@string/reveive_phone_str" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/receive_addr_phone_num"
+            style="@style/address_edit_style"
+            android:layout_below="@+id/notice_receiver_phone"
+            android:singleLine="true"
+            android:maxLength="11"
+            android:inputType="phone" />
+
+        <LinearLayout
+            android:id="@+id/receiver_addr_area_root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/receive_addr_phone_num"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/notice_receiver_area_sum"
+                style="@style/address_edit_notice_style"
+                android:text="@string/receive_area_sum_str" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/receive_addr_area_sum"
+                style="@style/address_edit_style"
+                android:enabled="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/receiver_addr_click_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/receiver_addr_area_root"
+            android:layout_alignTop="@+id/receiver_addr_area_root"
+            android:layout_alignRight="@+id/receiver_addr_area_root"
+            android:layout_alignBottom="@+id/receiver_addr_area_root"
+            android:background="@color/white"
+            android:alpha="0.01"/>
+
+        <TextView
+            android:id="@+id/notice_receiver_area_detail"
+            style="@style/address_edit_notice_style"
+            android:layout_below="@+id/receiver_addr_area_root"
+            android:text="@string/receive_area_str" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/receive_addr_area_detail"
+            style="@style/address_edit_style"
+            android:layout_below="@+id/notice_receiver_area_detail"
+            android:singleLine="true"
+            android:hint="@string/receive_area_hint_str" />
+
+        <TextView
+            android:id="@+id/save_address_in_edit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginRight="@dimen/dp_24"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:background="@drawable/round_cornor_24dp_bg"
+            android:gravity="center"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16" />
+    </RelativeLayout>
+</layout>

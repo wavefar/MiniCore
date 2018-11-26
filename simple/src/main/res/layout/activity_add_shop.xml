@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.merchant.AddShopActivity">
+
+        <include
+            android:id="@+id/shopApplyHead"
+            layout="@layout/head_layout" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/shopApplyHead"
+            android:layout_marginTop="@dimen/dp_24">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/adShopName"
+                    style="@style/shop_apply_left_tv"
+                    android:layout_alignTop="@+id/adShopNameText"
+                    android:layout_alignBottom="@+id/adShopNameText"
+                    android:text="名称" />
+
+                <EditText
+                    android:id="@+id/adShopNameText"
+                    style="@style/shop_apply_right_et"
+                    android:layout_toEndOf="@+id/adShopName"
+                    android:hint="店铺名称"
+                    android:inputType="text" />
+
+                <TextView
+                    android:id="@+id/adShopAddr"
+                    style="@style/shop_apply_left_tv"
+                    android:layout_alignTop="@+id/adShopAddrText"
+                    android:layout_alignBottom="@+id/adShopAddrText"
+                    android:text="地址" />
+
+                <TextView
+                    android:id="@+id/adShopAddrText"
+                    style="@style/shop_apply_right_et"
+                    android:layout_below="@+id/adShopNameText"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_toEndOf="@+id/adShopAddr"
+                    android:drawableRight="@drawable/arrow_right_gray"
+                    android:hint="店铺地址"
+                    android:paddingTop="@dimen/dp_8"
+                    android:paddingBottom="@dimen/dp_8" />
+
+                <!--<TextView
+                    android:id="@+id/adShopCode"
+                    style="@style/shop_apply_left_tv"
+                    android:layout_alignTop="@+id/adShopCodeText"
+                    android:layout_alignBottom="@+id/adShopCodeText"
+                    android:text="编号" />
+
+                <EditText
+                    android:id="@+id/adShopCodeText"
+                    style="@style/shop_apply_right_et"
+                    android:layout_below="@+id/adShopAddrText"
+                    android:layout_toEndOf="@+id/adShopCode"
+                    android:hint="店铺编号" />-->
+
+                <TextView
+                    android:id="@+id/adShopPhone"
+                    style="@style/shop_apply_left_tv"
+                    android:layout_alignTop="@+id/adShopPhoneText"
+                    android:layout_alignBottom="@+id/adShopPhoneText"
+                    android:text="电话" />
+
+                <EditText
+                    android:id="@+id/adShopPhoneText"
+                    style="@style/shop_apply_right_et"
+                    android:layout_below="@+id/adShopAddrText"
+                    android:layout_toEndOf="@+id/adShopPhone"
+                    android:hint="联系电话"
+                    android:inputType="phone"
+                    android:maxLength="11" />
+
+                <TextView
+                    android:id="@+id/asShopImgNoUse"
+                    style="@style/shop_apply_left_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/adShopPhoneText"
+                    android:paddingLeft="@dimen/dp_8"
+                    android:paddingRight="@dimen/dp_8"
+                    android:text="店铺图片（2:1,建议宽800，高400）" />
+
+                <LinearLayout
+                    android:id="@+id/adShopImgRoot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/asShopImgNoUse"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:id="@+id/adShopImgImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:duplicateParentState="true"
+                        android:focusable="true"
+                        android:foregroundGravity="center"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/add_center_white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/adShopImgRoot"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_24"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_24"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/clickToSave"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_12"
+                        android:layout_weight="1"
+                        android:background="@drawable/round_cornor_24dp_bg"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/dp_12"
+                        android:paddingBottom="@dimen/dp_12"
+                        android:text="保存"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_14" />
+
+                    <TextView
+                        android:id="@+id/clickToSubmitPublish"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_12"
+                        android:layout_weight="1"
+                        android:background="@drawable/round_cornor_24dp_bg"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/dp_12"
+                        android:paddingBottom="@dimen/dp_12"
+                        android:text="提交审核"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+</layout>

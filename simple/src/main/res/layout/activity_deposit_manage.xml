@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="org.wavefar.lib.binding.viewadapter.recyclerview.LineManagers" />
+
+        <import type="com.lq.cxy.shop.model.viewmodel.MerchantDepositManViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.lq.cxy.shop.model.viewmodel.MerchantDepositManViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.merchant.DepositManage">
+
+        <include
+            android:id="@+id/depositHeadRoot"
+            layout="@layout/head_layout" />
+
+        <org.wavefar.lib.ui.widget.BottomNavigationViewEx
+            android:id="@+id/merchantDepositNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:background="@color/color_white"
+            app:itemIconTint="@color/bottom_tab_text_color"
+            app:itemTextColor="@color/bottom_tab_text_color"
+            app:menu="@menu/deposit_man_menu" />
+
+        <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+            android:id="@+id/depositRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8"
+            app:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+            app:onRefreshCommand="@{viewModel.onRefreshCommand}"
+            app:tr_head_height="56dp"
+            app:tr_wave_height="56dp">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:adapter="@{viewModel.adapter}"
+                app:itemBinding="@{viewModel.itemBinding}"
+                app:items="@{viewModel.listObservable}"
+                app:layoutManager="@{LayoutManagers.linear()}"
+                app:lineManager="@{LineManagers.horizontal()}" />
+
+        </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+    </LinearLayout>
+</layout>

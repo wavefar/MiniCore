@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.lq.cxy.shop.model.viewmodel.AddressItemViewModel" />
+
+        <import type="com.lq.cxy.shop.model.entity.AddressEntity" />
+
+        <variable
+            name="addressItem"
+            type="com.lq.cxy.shop.model.viewmodel.AddressItemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/receive_addr_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(v)->addressItem.addrClickListener.onClick(v,addressItem.userAddress)}"
+        android:padding="@dimen/dp_8">
+
+        <TextView
+            android:id="@+id/receive_addr_username"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:text="@{addressItem.userAddress.userName}" />
+
+        <TextView
+            android:id="@+id/receive_addr_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/receive_addr_username"
+            android:text="@{addressItem.userAddress.phoneNum}" />
+
+        <TextView
+            android:id="@+id/receive_addr_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/receive_addr_username"
+            android:singleLine="true"
+            android:text="@{addressItem.userAddress.address}" />
+
+        <ImageView
+            android:id="@+id/receive_addr_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/receive_addr_tv"
+            android:layout_alignParentRight="true"
+            android:onClick="@{(v)->addressItem.addrClickListener.onClick(v,addressItem.userAddress)}"
+            android:src="@drawable/delete_red" />
+
+        <ImageView
+            android:id="@+id/receive_addr_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/receive_addr_tv"
+            android:layout_marginRight="@dimen/dp_12"
+            android:layout_toLeftOf="@+id/receive_addr_delete"
+            android:onClick="@{(v)->addressItem.addrClickListener.onClick(v,addressItem.userAddress)}"
+            android:src="@drawable/edit_red" />
+    </RelativeLayout>
+</layout>

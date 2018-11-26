@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="@dimen/dp_10"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/BaseTextView"
+            android:id="@+id/brand_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_brand"
+            android:drawablePadding="@dimen/dp_10"
+            android:hint="请选择送水商家及商品"
+            android:textColor="@color/color_888888" />
+
+        <org.wavefar.lib.ui.widget.CounterView
+            android:id="@+id/goods_num"
+            style="@style/BaseTextView"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <include layout="@layout/public_line_divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/date_tv"
+            style="@style/BaseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_date"
+            android:drawablePadding="@dimen/dp_10"
+            android:layout_weight="1"
+            android:hint="选取日期"
+            android:textColor="@color/color_888888" />
+
+        <TextView
+            style="@style/BaseTextView"
+            android:id="@+id/time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_time"
+            android:drawablePadding="@dimen/dp_10"
+            android:layout_weight="1"
+            android:hint="选择时间"
+            android:textColor="@color/color_888888" />
+    </LinearLayout>
+
+    <include layout="@layout/public_line_divider" />
+
+    <include layout="@layout/address_item" />
+
+    <include layout="@layout/public_line_divider" />
+    <Button
+        android:id="@+id/saveBtn"
+        style="@style/BaseTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:background="@drawable/shape_btn"
+        android:gravity="center"
+        android:text="立即下单"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+</LinearLayout>

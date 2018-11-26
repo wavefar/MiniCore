@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="org.wavefar.lib.binding.viewadapter.recyclerview.LineManagers" />
+        <import type="com.lq.cxy.shop.model.viewmodel.MerchantOrderViewModel"/>
+        <variable
+            name="viewModel"
+            type="com.lq.cxy.shop.model.viewmodel.MerchantOrderViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.merchant.MerchandiseManageFrag">
+
+        <org.wavefar.lib.ui.widget.BottomNavigationViewEx
+            android:id="@+id/merchantOrderNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_white"
+            app:itemIconTint="@color/bottom_tab_text_color"
+            app:itemTextColor="@color/bottom_tab_text_color"
+            app:menu="@menu/merchant_order_menu" />
+
+        <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+            android:id="@+id/merchantOrderRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/merchantOrderNav"
+            app:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+            app:onRefreshCommand="@{viewModel.onRefreshCommand}"
+            app:tr_head_height="80dp"
+            app:tr_wave_height="80dp">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:adapter="@{viewModel.adapter}"
+                app:itemBinding="@{viewModel.merchantOrderListItem}"
+                app:items="@{viewModel.listObservable}"
+                app:layoutManager="@{LayoutManagers.linear()}"
+                app:lineManager="@{LineManagers.horizontal()}" />
+
+        </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+
+
+    </RelativeLayout>
+</layout>
