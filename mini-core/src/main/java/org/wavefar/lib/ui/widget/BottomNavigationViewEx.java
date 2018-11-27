@@ -773,8 +773,8 @@ public class BottomNavigationViewEx extends BottomNavigationView {
     /**
      * set Typeface for all item TextView
      *
-     * @attr ref android.R.styleable#TextView_typeface
-     * @attr ref android.R.styleable#TextView_textStyle
+     * @param typeface <pre>{@code android.R.styleable#TextView_typeface}</pre>
+     * @param style <pre>{@code android.R.styleable#TextView_textStyle}</pre>
      */
     @SuppressLint("RestrictedApi")
     public void setTypeface(Typeface typeface, int style) {
@@ -788,8 +788,7 @@ public class BottomNavigationViewEx extends BottomNavigationView {
 
     /**
      * set Typeface for all item TextView
-     *
-     * @attr ref android.R.styleable#TextView_typeface
+     * @param typeface <pre>{@code ref android.R.styleable#TextView_typeface}</pre>
      */
     @SuppressLint("RestrictedApi")
     public void setTypeface(Typeface typeface) {

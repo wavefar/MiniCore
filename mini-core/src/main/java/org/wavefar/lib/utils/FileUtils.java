@@ -34,6 +34,11 @@ public class FileUtils {
 	/**
 	 * 存档到data/data/files
 	 * 保存文件
+	 * @param context 上下文对象
+	 * @param file 文件名
+	 * @param msg 保存的数据
+	 * @return
+	 * @throws IOException
 	 */
 	public static boolean writeLocalFile(Context context, String file,
                                          byte[] msg) throws IOException {
@@ -49,6 +54,10 @@ public class FileUtils {
 	
 	/**
 	 * 读取文件data/data/files
+	 * @param context 上下文对象
+	 * @param file 文件名
+	 * @return
+	 * @throws IOException
 	 */
 	public static byte[] readLocalFile(Context context, String file)
 			throws IOException {
@@ -71,6 +80,9 @@ public class FileUtils {
 
 	/**
 	 * 从流内容读取文件
+	 * @param is 输入流
+	 * @return
+	 * @throws IOException
 	 */
 	public static byte[] readStreamFile(InputStream is) throws IOException {
 		byte[] data;
@@ -111,7 +123,6 @@ public class FileUtils {
 	 * 读取文件数据 可以指定任意目录
 	 * @param file 文件名称
 	 * @return
-	 * @throws IOException
 	 */
 	public static byte[] readFile(String file) {
 		byte[] datas = null;
@@ -134,10 +145,14 @@ public class FileUtils {
 	}
 	
 	/**
+	 *
 	 * 判断文件是否存在 data/data/files
+	 * @param context 上下文对象
+	 * @param fileName 文件名
+	 * @return
 	 */
-	public static boolean checkFileIsExists(Context mContext, String fileName) {
-		java.io.File fileDir = mContext.getFilesDir();
+	public static boolean checkFileIsExists(Context context, String fileName) {
+		java.io.File fileDir = context.getFilesDir();
 		String sFileName = fileDir.getParent() + java.io.File.separator
 				+ fileDir.getName() + java.io.File.separator + fileName;
 		java.io.File file = new java.io.File(sFileName);
@@ -146,10 +161,13 @@ public class FileUtils {
 
 	/**
 	 * 取得文件最后修改日期
+	 * @param context 上下文对象
+	 * @param fileName 文件名
+	 * @return
 	 */
-	public static String getFileDatetime(Context mContext, String fileName) {
+	public static String getFileDatetime(Context context, String fileName) {
 		String dt = "";
-		java.io.File fileDir = mContext.getFilesDir();
+		java.io.File fileDir = context.getFilesDir();
 		String sFileName = fileDir.getParent() + java.io.File.separator
 				+ fileDir.getName() + java.io.File.separator + fileName;
 		java.io.File file = new java.io.File(sFileName);
@@ -161,10 +179,13 @@ public class FileUtils {
 
 	/**
 	 * 判断目录是否存在
+	 * @param context 上下文对象
+	 * @param dirName 文件夹
+	 * @return 返回boolean状态
 	 */
-	public static boolean checkDirectoryIsExists(Context mContext,
+	public static boolean checkDirectoryIsExists(Context context,
 			String dirName) {
-		java.io.File fileDir = mContext.getFilesDir();
+		java.io.File fileDir = context.getFilesDir();
 		String sFileName = fileDir.getParent() + java.io.File.separator
 				+ fileDir.getName() + java.io.File.separator + dirName;
 		java.io.File file = new java.io.File(sFileName);
@@ -173,9 +194,12 @@ public class FileUtils {
 
 	/**
 	 * 创建新的目录
+	 * @param context 上下文
+	 * @param dirName 目录名称
+	 * @return 创建是否成功
 	 */
-	public static boolean createDirectory(Context mContext, String dirName) {
-		java.io.File fileDir = mContext.getFilesDir();
+	public static boolean createDirectory(Context context, String dirName) {
+		java.io.File fileDir = context.getFilesDir();
 		String sFileName = fileDir.getParent() + java.io.File.separator
 				+ fileDir.getName() + java.io.File.separator + dirName;
 		java.io.File file = new java.io.File(sFileName);
@@ -184,14 +208,14 @@ public class FileUtils {
 
 	/**
 	 * 通过本地图片路径返回bitmap
-	 * @param context
+	 * @param context 上下文对象
 	 * @param fileName 图片文件名
 	 * @param defaultImage 未解析成功后显示的错误图片资源
-	 * @return
+	 * @return 返回bitmap
 	 */
 	public static Bitmap loadBitmapFromFile(Context context, String fileName,
                                             int defaultImage) {
-		Bitmap bm = null;
+		Bitmap bm;
 		String bmpPath = context.getFilesDir() + java.io.File.separator
 				+ fileName;
 		bm = BitmapFactory.decodeFile(bmpPath);
@@ -220,8 +244,7 @@ public class FileUtils {
 
 	/**
 	 * 清除文件
-	 *
-	 * @param file
+	 * @param file 文件
 	 */
 	public static void deleteFile(File file) {
 		if (file.exists()) {
@@ -269,7 +292,6 @@ public class FileUtils {
 	 * @param context
 	 * @param cacheRoot 缓存目录
 	 * @return
-	 * @throws Exception
 	 */
 	public static String getCacheSize(Context context, String cacheRoot) {
 		File fileCache = context.getCacheDir();
@@ -441,7 +463,7 @@ public class FileUtils {
 	
 	/**
 	 * 获取apk或其他文件大小
-	 * @throws Exception
+	 * @param apk 文件名
 	 */
 	public static String getApkSize(File apk)
 	{
@@ -452,9 +474,7 @@ public class FileUtils {
      * 文件解压解压缩
      * @param zipFile：需要解压缩的文件如：apk等zip包
      * @param descDir：解压后的目标目录
-     * @return true 代表成功、false 失败
 	 * @throws IOException
-	 * @throws ZipException
      */
     public static void unCompress(File zipFile, String descDir) throws IOException {
              ZipFile zf = new ZipFile(zipFile);

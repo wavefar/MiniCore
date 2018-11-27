@@ -1,9 +1,7 @@
 package com.lq.cxy.shop.model.viewmodel;
 
 import android.content.Context;
-import android.os.Bundle;
 
-import com.lq.cxy.shop.fragment.merchant.MerchantOrderDetailFrag;
 import com.lq.cxy.shop.model.entity.OrderEntity;
 
 import org.wavefar.lib.base.BaseViewModel;
@@ -17,8 +15,8 @@ public class MerchantOrderItemViewModel extends BaseViewModel {
     }
 
     public void onItemClick() {
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(MerchantOrderDetailFrag.KEY_MERCHANT_ORDER, itemEntity);
-        startContainerActivity(MerchantOrderDetailFrag.class.getName(),bundle);
+//        Bundle bundle = new Bundle();
+//        bundle.putParcelable(MerchantOrderDetailFrag.KEY_MERCHANT_ORDER, itemEntity);
+//        startContainerActivity(MerchantOrderDetailFrag.class.getName(),bundle);
     }
 }

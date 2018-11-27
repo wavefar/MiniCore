@@ -13,7 +13,7 @@ import java.util.Objects;
 
 /**
  * 统一回调接口
- * @param <T>
+ * @param <T> 泛型类型
  * @author summer
  */
 public abstract class BaseResultCallback<T> {

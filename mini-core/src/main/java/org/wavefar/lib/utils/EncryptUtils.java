@@ -229,8 +229,6 @@ public class EncryptUtils {
 	 * @param data
 	 *            待加密字符串
 	 * @return 加密后的字节数组，一般结合Base64编码使用
-	 * @throws InvalidAlgorithmParameterException
-	 * @throws Exception
 	 */
 	public static String encodeDES(String key, String data) {
 		if (data == null) {
@@ -261,8 +259,6 @@ public class EncryptUtils {
 	 * @param data
 	 *            待解密字符串
 	 * @return 解密后的字节数组
-	 * @throws Exception
-	 *             异常
 	 */
 	public static String decodeDES(String key, String data) {
 		if (data == null) {

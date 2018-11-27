@@ -24,21 +24,18 @@ import org.wavefar.lib.R;
  * 所有的弹窗封装,所有弹窗增加try{...}catch(Exception e) 防止未知错误
  *
  * @author summer
- * @description
- * @date 2014年7月28日 上午11:49:31
  */
 public class AlertUtils {
+
+    //重复点击时差毫秒数
+    private static int milliseconds = 1000;
+    //弹窗单例
     /**
      * show Alert Dialog
-     *
      * @param context
      * @param titleId
      * @param messageId
      */
-    //重复点击时差毫秒数
-    private static int milliseconds = 1000;
-    //弹窗单例
-
     public static void showAlert(Context context, int titleId, int messageId) {
         if (context instanceof Activity && ((Activity) context).isFinishing()) {
             return;

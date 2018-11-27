@@ -27,8 +27,6 @@ import java.util.ArrayList;
  * <pre>2、监听视图发生变化setOnBannerChangerListener（常用于title切换）</pre>
  *
  * @author summer
- * @description BannerView 控件封装
- * @date 2014年5月15日 下午6:41:23
  */
 public class BannerView extends LinearLayout {
 
@@ -240,18 +238,15 @@ public class BannerView extends LinearLayout {
 
     /**
      * banner适配器
-     *
      * @author summer
-     * @description
-     * @date 2014年5月16日 上午9:59:51
      */
     public class BannerAdaptor extends PagerAdapter {
 
         private ArrayList<View> list;
 
-        public BannerAdaptor(ArrayList<View> childlist) {
+        public BannerAdaptor(ArrayList<View> childList) {
             super();
-            this.list = childlist;
+            this.list = childList;
         }
 
         @Override

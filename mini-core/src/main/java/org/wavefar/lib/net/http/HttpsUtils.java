@@ -24,6 +24,7 @@ import javax.net.ssl.X509TrustManager;
 
 /**
  * 对https 的ssl进行验证
+ * @author Administrator
  */
 public class HttpsUtils {
 
@@ -54,8 +55,8 @@ public class HttpsUtils {
 
     /**
      * https双向认证
-     * bksFile 和 password -> 客户端使用bks证书校验服务端证书
-     * certificates -> 用含有服务端公钥的证书校验服务端证书
+     * bksFile 和 password 客户端使用bks证书校验服务端证书
+     * certificates  用含有服务端公钥的证书校验服务端证书
      */
     public static SSLParams getSslSocketFactory(InputStream bksFile, String password, InputStream... certificates) {
         return getSslSocketFactoryBase(null, bksFile, password, certificates);
@@ -63,8 +64,8 @@ public class HttpsUtils {
 
     /**
      * https双向认证
-     * bksFile 和 password -> 客户端使用bks证书校验服务端证书
-     * X509TrustManager -> 如果需要自己校验，那么可以自己实现相关校验，如果不需要自己校验，那么传null即可
+     * bksFile 和 password 客户端使用bks证书校验服务端证书
+     * X509TrustManager 如果需要自己校验，那么可以自己实现相关校验，如果不需要自己校验，那么传null即可
      */
     public static SSLParams getSslSocketFactory(InputStream bksFile, String password, X509TrustManager trustManager) {
         return getSslSocketFactoryBase(trustManager, bksFile, password);
@@ -95,9 +96,7 @@ public class HttpsUtils {
             sslParams.sSLSocketFactory = sslContext.getSocketFactory();
             sslParams.trustManager = manager;
             return sslParams;
-        } catch (NoSuchAlgorithmException e) {
-            throw new AssertionError(e);
-        } catch (KeyManagementException e) {
+        } catch (NoSuchAlgorithmException | KeyManagementException e) {
             throw new AssertionError(e);
         }
     }

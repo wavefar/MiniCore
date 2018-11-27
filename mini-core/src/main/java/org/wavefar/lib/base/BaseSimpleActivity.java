@@ -78,8 +78,7 @@ public abstract class BaseSimpleActivity extends AppCompatActivity implements IB
 
     /**
      * 如果有Bundle，直接返回；
-     *
-     * @param bundle
+     * @param bundle 传递的参数
      */
     protected void getBundle(Bundle bundle) {
 

@@ -68,80 +68,43 @@ public class TabFragmentActivity extends BaseSimpleActivity {
         });
     }
 
+
     /**
      * 填充底部菜单 注意所有参数一一对应
      *
-     * @param menuId         预先设置菜单ID
-     * @param top_icon_resId 菜单图标资源文件数组
-     * @param str_resId      菜单文字资源文件数组
-     * @param fragments      片段类数组
+     * @param menuId                 预先设置菜单ID
+     * @param topIconResId           菜单图标资源文件数组
+     * @param strResId               菜单文字资源文件数组
+     * @param fragments              片段类数组
+     * @param titleColor             菜单文字颜色
+     * @param tabBottomBackgroundRes 菜单背景颜色
      */
-    public void setBottomMenuAndIntent(String[] menuId, int[] top_icon_resId,
-                                       int[] str_resId, Class[] fragments) {
-
-        setBottomMenuAndIntent(menuId, top_icon_resId, str_resId, fragments, 0, 0);
+    public void setBottomMenuAndIntent(String[] menuId, int[] topIconResId,
+                                       String[] strResId, Class[] fragments, int titleColor, int tabBottomBackgroundRes) {
+        setBottomMenuAndIntent(menuId, topIconResId, strResId, fragments, null, titleColor, tabBottomBackgroundRes);
     }
 
     /**
      * 填充底部菜单 注意所有参数一一对应
      *
      * @param menuId                 预先设置菜单ID
-     * @param top_icon_resId         菜单图标资源文件数组
-     * @param str_resId              菜单文字资源文件数组
+     * @param topIconResId           菜单图标资源文件数组
+     * @param strResId               菜单文字资源文件数组
      * @param fragments              片段类数组
+     * @param bundles                默认参数
      * @param titleColor             菜单文字颜色
      * @param tabBottomBackgroundRes 菜单背景颜色
      */
-    public void setBottomMenuAndIntent(String[] menuId, int[] top_icon_resId,
-                                       int[] str_resId, Class[] fragments, int titleColor, int tabBottomBackgroundRes) {
-        if (null != mTabHost) {
-            for (int j = 0; j < menuId.length; j++) {
-                // 菜单按钮布局文件
-                View view1 = View.inflate(TabFragmentActivity.this, R.layout.tab_item,
-                        null);
-                TextView tab_title = view1.findViewById(R.id.tab_textview_title);
-                tab_title.setCompoundDrawablesWithIntrinsicBounds(0, top_icon_resId[j], 0, 0);
-                tab_title.setText(str_resId[j]);
-                if (tabBottomBackgroundRes != 0) {
-                    view1.setBackgroundResource(tabBottomBackgroundRes);
-                }
-                if (titleColor != 0) {
-                    ColorStateList colorStateList = getResources().getColorStateList(titleColor);
-                    tab_title.setTextColor(colorStateList);
-                }
-                /* 初始化意图 */
-                mTabHost.addTab(buildTabSpec(String.valueOf(menuId[j]), view1),
-                        fragments[j], null);
-            }
-        }
-    }
-
-
-    public void setBottomMenuAndIntent(String[] menuId, int[] top_icon_resId,
-                                       String[] str_resId, Class[] fragments, int titleColor, int tabBottomBackgroundRes) {
-        setBottomMenuAndIntent(menuId, top_icon_resId, str_resId, fragments, null, titleColor, tabBottomBackgroundRes);
-    }
-
-    /**
-     * 填充底部菜单 注意所有参数一一对应
-     *
-     * @param menuId                 预先设置菜单ID
-     * @param top_icon_resId         菜单图标资源文件数组
-     * @param str_resId              菜单文字资源文件数组
-     * @param fragments              片段类数组
-     * @param titleColor             菜单文字颜色
-     * @param tabBottomBackgroundRes 菜单背景颜色
-     */
-    public void setBottomMenuAndIntent(String[] menuId, int[] top_icon_resId,
-                                       String[] str_resId, Class[] fragments, Bundle[] bundles, int titleColor, int tabBottomBackgroundRes) {
+    public void setBottomMenuAndIntent(String[] menuId, int[] topIconResId,
+                                       String[] strResId, Class[] fragments, Bundle[] bundles, int titleColor, int tabBottomBackgroundRes) {
         if (null != mTabHost) {
             for (int j = 0; j < menuId.length; j++) {
                 // 菜单按钮布局文件
                 View view1 = View.inflate(TabFragmentActivity.this, R.layout.tab_item,
                         null);
                 TextView titleTv = view1.findViewById(R.id.tab_textview_title);
-                titleTv.setCompoundDrawablesWithIntrinsicBounds(0, top_icon_resId[j], 0, 0);
-                titleTv.setText(str_resId[j]);
+                titleTv.setCompoundDrawablesWithIntrinsicBounds(0, topIconResId[j], 0, 0);
+                titleTv.setText(strResId[j]);
                 if (tabBottomBackgroundRes != 0) {
                     view1.setBackgroundResource(tabBottomBackgroundRes);
                 }
@@ -166,10 +129,10 @@ public class TabFragmentActivity extends BaseSimpleActivity {
     /**
      * 是否隐藏底部
      *
-     * @param isvisibility
+     * @param isVisibility 是否显示底部菜单
      */
-    public void hideBottomMenu(boolean isvisibility) {
-        if (isvisibility) {
+    public void hideBottomMenu(boolean isVisibility) {
+        if (isVisibility) {
             mTabHost.getTabWidget().setVisibility(View.GONE);
         } else {
             mTabHost.getTabWidget().setVisibility(View.VISIBLE);
@@ -178,9 +141,11 @@ public class TabFragmentActivity extends BaseSimpleActivity {
 
     /**
      * 设置底部背景图片
+     *
+     * @param bgResId 资源ID
      */
-    public void setTabBackground(int bg_resId) {
-        mTabHost.getTabWidget().setBackgroundResource(bg_resId);
+    public void setTabBackground(int bgResId) {
+        mTabHost.getTabWidget().setBackgroundResource(bgResId);
     }
 
     /**
@@ -198,10 +163,10 @@ public class TabFragmentActivity extends BaseSimpleActivity {
     /**
      * 启动指定的页面
      *
-     * @param menu_Id
+     * @param menuId
      */
-    public void startIabIntent(String menu_Id) {
-        this.mTabHost.setCurrentTabByTag(menu_Id);
+    public void startIabIntent(String menuId) {
+        this.mTabHost.setCurrentTabByTag(menuId);
     }
 
     /**

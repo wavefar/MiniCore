@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import org.wavefar.lib.R;
 
 /**
  * 简单WebView实现
@@ -39,6 +38,5 @@ public class ViewAdapter {
         settings.setDomStorageEnabled(true);
         settings.setLoadWithOverviewMode(true);
         settings.setUseWideViewPort(true);
-        settings.setDefaultFixedFontSize(webView.getResources().getDimensionPixelSize(R.dimen.sp_24));
     }
 }

@@ -6,8 +6,6 @@ import java.util.HashMap;
  * 身份证格式严格验证工具类
  * 
  * @author summer
- * @Dete 2016年6月21日 上午1:06:58
- * @description
  */
 public class IDCardUtil {
 
@@ -137,26 +135,26 @@ public class IDCardUtil {
 
 	/**
 	 * 验证身份证
-	 * @param idcard 待验证的身份证号码
+	 * @param idCard 待验证的身份证号码
 	 * @return
 	 */
-	public static boolean verify(String idcard) {
+	public static boolean verify(String idCard) {
 		_codeError = "";
 		// 验证身份证位数,15位和18位身份证
-		if (!verifyLength(idcard)) {
+		if (!verifyLength(idCard)) {
 			return false;
 		}
 		// 验证身份除了最后位其他的是否包含字母
-		if (!containsAllNumber(idcard)) {
+		if (!containsAllNumber(idCard)) {
 			return false;
 		}
 
 		// 如果是15位的就转成18位的身份证
 		String eifhteencard = "";
-		if (idcard.length() == 15) {
-			eifhteencard = uptoeighteen(idcard);
+		if (idCard.length() == 15) {
+			eifhteencard = uptoeighteen(idCard);
 		} else {
-			eifhteencard = idcard;
+			eifhteencard = idCard;
 		}
 		// 验证身份证的地区码
 		if (!verifyAreaCode(eifhteencard)) {

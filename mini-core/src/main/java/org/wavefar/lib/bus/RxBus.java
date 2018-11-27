@@ -13,6 +13,7 @@ import io.reactivex.subjects.Subject;
 
 /**
  * 只会把在订阅发生的时间点之后来自原始Observable的数据发射给观察者
+ * @author Administrator
  */
 public class RxBus {
     private static volatile RxBus mDefaultInstance;
@@ -38,6 +39,7 @@ public class RxBus {
 
     /**
      * 发送事件
+     * @param event
      */
     public void post(Object event) {
         mBus.onNext(event);
@@ -45,6 +47,9 @@ public class RxBus {
 
     /**
      * 根据传递的 eventType 类型返回特定类型(eventType)的 被观察者
+     * @param eventType
+     * @param <T>
+     * @return
      */
     public <T> Observable<T> toObservable(Class<T> eventType) {
         return mBus.ofType(eventType);
@@ -61,12 +66,10 @@ public class RxBus {
         mDefaultInstance = null;
     }
 
-    /**
-     * Stciky 相关
-     */
 
     /**
      * 发送一个新Sticky事件
+     * @param event
      */
     public void postSticky(Object event) {
         synchronized (mStickyEventMap) {
@@ -74,9 +77,11 @@ public class RxBus {
         }
         post(event);
     }
-
     /**
      * 根据传递的 eventType 类型返回特定类型(eventType)的 被观察者
+     * @param eventType
+     * @param <T>
+     * @return
      */
     public <T> Observable<T> toObservableSticky(final Class<T> eventType) {
         synchronized (mStickyEventMap) {
@@ -98,6 +103,9 @@ public class RxBus {
 
     /**
      * 根据eventType获取Sticky事件
+     * @param eventType
+     * @param <T>
+     * @return
      */
     public <T> T getStickyEvent(Class<T> eventType) {
         synchronized (mStickyEventMap) {
@@ -106,7 +114,10 @@ public class RxBus {
     }
 
     /**
-     * 移除指定eventType的Sticky事件
+     *  移除指定eventType的Sticky事件
+     * @param eventType
+     * @param <T>
+     * @return
      */
     public <T> T removeStickyEvent(Class<T> eventType) {
         synchronized (mStickyEventMap) {

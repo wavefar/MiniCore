@@ -25,7 +25,6 @@ import okhttp3.ResponseBody;
  * 对http的所有请求进行封装管理
  *
  * @author: summer
- * @date: 2018/8/16 11:02
  */
 public class HttpClientManager {
 

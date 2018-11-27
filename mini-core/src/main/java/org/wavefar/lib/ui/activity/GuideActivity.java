@@ -12,9 +12,7 @@ import java.io.IOException;
  * 如果需要用到新手指引集成该类
  * 在firstPage里处理遮罩
  * </pre>
- * @description
  * @author summer
- * @date 2014年8月26日 上午10:36:12
  */
 public abstract class GuideActivity extends BaseSimpleActivity {
 

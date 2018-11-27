@@ -32,12 +32,12 @@ import com.lq.cxy.shop.model.http.base.BaseResponseEntity;
 import com.lq.cxy.shop.model.merchant.LicenseSupplyApi;
 import com.lq.cxy.shop.utils.UiUtil;
 import com.lq.cxy.shop.utils.Util;
-import com.lq.cxy.shop.utils.Validator;
 import com.yuyh.library.imgsel.ISNav;
 import com.yuyh.library.imgsel.config.ISListConfig;
 
 import org.greenrobot.eventbus.EventBus;
 import org.wavefar.lib.net.callback.BaseResultCallback;
+import org.wavefar.lib.utils.IDCardUtil;
 import org.wavefar.lib.utils.KeyBoardUtil;
 import org.wavefar.lib.utils.TimeUtil;
 import org.wavefar.lib.utils.ToastUtils;
@@ -286,7 +286,7 @@ public class LicenseSupply extends AppCompatActivity implements View.OnClickList
             ToastUtils.showShort(R.string.please_input_legal_num_str);
             return;
         } else {
-            if (!Validator.validator(legalNum)) {
+            if (!IDCardUtil.verify(legalNum)) {
                 ToastUtils.showShort(R.string.please_input_valid_legal_num_str);
                 return;
             }

@@ -12,10 +12,7 @@ import android.view.View.OnFocusChangeListener;
 
 /**
  * 带清除按钮的控件
- * @description
  * @author summer
- * @date 2014年4月15日 下午5:51:11
- *
  */
 public class ClearEditText extends AppCompatEditText implements
         OnFocusChangeListener, TextWatcher { 

@@ -1033,7 +1033,6 @@ public final class AppUtils {
 
     /**
      * 退出整个应用Toast显示
-     * @return
      */
     public static void exitShowToast() {
 

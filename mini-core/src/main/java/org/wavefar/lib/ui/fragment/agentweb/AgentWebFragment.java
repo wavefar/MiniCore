@@ -60,7 +60,7 @@ import java.util.HashMap;
 
 /**
  * 代理WebView封装
- *
+ * @author Administrator
  */
 public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 
@@ -244,12 +244,14 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 		 */
 		@Override
 		public boolean onResult(String path, String url, Throwable throwable) {
-			if (null == throwable) { //下载成功
+			//下载成功
+			if (null == throwable) {
 				//do you work
 			} else {//下载失败
 
 			}
-			return false; // true  不会发出下载完成的通知 , 或者打开文件
+			// true  不会发出下载完成的通知 , 或者打开文件
+			return false;
 		}
 	};
 
@@ -288,7 +290,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 	}
 
 	/**
-	 * 页面空白，请检查scheme是否加上， scheme://host:port/path?query&query 。
+	 * 页面空白，请检查scheme是否加上，{@code scheme://host:port/path?query&query}
 	 *
 	 * @return mUrl
 	 */
@@ -590,7 +592,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 	 * 法覆盖AgentWeb提供的功能，那么 MiddlewareWebClientBase 是一个
 	 * 不错的选择 。
 	 *
-	 * @return
+	 * @return 返回中间件对象
 	 */
 	protected MiddlewareWebClientBase getMiddlewareWebClient() {
 		return this.mMiddleWareWebClient = new MiddlewareWebViewClient() {

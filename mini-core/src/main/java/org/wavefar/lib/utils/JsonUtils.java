@@ -10,10 +10,7 @@ import java.util.TreeMap;
 
 /**
  * json 工具类
- * @description
  * @author summer
- * @date 2014年4月23日 上午11:16:14
- *
  */
 public class JsonUtils {
 
@@ -34,7 +31,7 @@ public class JsonUtils {
 	/**
 	 * json字符串转对象,解析多个实体类集合
 	 * @param json 字符串
-	 * @param typeOfT new TypeToken<ArrayList<T>>(){}.getType()
+	 * @param typeOfT <pre>{@code new TypeToken<ArrayList<T>>(){}.getType();}</pre>
 	 * @return T
 	 */
 	public static <T> T fromJson(String json, Type typeOfT) {

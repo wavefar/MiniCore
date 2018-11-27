@@ -15,6 +15,7 @@ public class ViewAdapter {
      * 设置开关状态
      *
      * @param mSwitch Switch控件
+     * @param isChecked 是否选中
      */
     @BindingAdapter("switchState")
     public static void setSwitchState(Switch mSwitch, boolean isChecked) {
