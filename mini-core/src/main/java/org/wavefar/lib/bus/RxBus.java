@@ -57,6 +57,7 @@ public class RxBus {
 
     /**
      * 判断是否有订阅者
+     * @return
      */
     public boolean hasObservers() {
         return mBus.hasObservers();

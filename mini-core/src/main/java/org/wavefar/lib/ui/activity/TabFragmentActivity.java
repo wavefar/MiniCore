@@ -163,7 +163,7 @@ public class TabFragmentActivity extends BaseSimpleActivity {
     /**
      * 启动指定的页面
      *
-     * @param menuId
+     * @param menuId 菜单ID
      */
     public void startIabIntent(String menuId) {
         this.mTabHost.setCurrentTabByTag(menuId);
@@ -211,7 +211,7 @@ public class TabFragmentActivity extends BaseSimpleActivity {
     /**
      * 设置监听器
      *
-     * @param tabBarChangeListener
+     * @param tabBarChangeListener 切换监听
      */
     public void setTabBarChangeListener(TabBarChangeListener tabBarChangeListener) {
         this.tabBarChangeListener = tabBarChangeListener;

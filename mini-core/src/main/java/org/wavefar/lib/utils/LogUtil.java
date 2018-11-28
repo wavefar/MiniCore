@@ -11,7 +11,7 @@ import android.util.Log;
  */
 public final class LogUtil {
 
-	public static final boolean DEBUG = BuildConfig.DEBUG;
+	private static final boolean DEBUG = BuildConfig.DEBUG;
 
 	public static void v(String tag, String msg) {
 		if (DEBUG) {

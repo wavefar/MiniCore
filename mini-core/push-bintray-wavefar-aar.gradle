@@ -109,7 +109,7 @@ bintray {
     key = bintrayApikey
     configurations = ['archives']
     pkg {
-        repo = "maven"
+        repo = "wavefar"
         name = projectName
         websiteUrl = projectSiteUrl
         vcsUrl = projectGitUrl

@@ -37,7 +37,7 @@ public class FileUtils {
 	 * @param context 上下文对象
 	 * @param file 文件名
 	 * @param msg 保存的数据
-	 * @return
+	 * @return 成功与否
 	 * @throws IOException
 	 */
 	public static boolean writeLocalFile(Context context, String file,
@@ -56,7 +56,7 @@ public class FileUtils {
 	 * 读取文件data/data/files
 	 * @param context 上下文对象
 	 * @param file 文件名
-	 * @return
+	 * @return 字节数组
 	 * @throws IOException
 	 */
 	public static byte[] readLocalFile(Context context, String file)
@@ -81,8 +81,8 @@ public class FileUtils {
 	/**
 	 * 从流内容读取文件
 	 * @param is 输入流
-	 * @return
-	 * @throws IOException
+	 * @return 字节数组
+	 * @throws IOException io异常
 	 */
 	public static byte[] readStreamFile(InputStream is) throws IOException {
 		byte[] data;
@@ -122,10 +122,10 @@ public class FileUtils {
 	/**
 	 * 读取文件数据 可以指定任意目录
 	 * @param file 文件名称
-	 * @return
+	 * @return 字节数组
 	 */
 	public static byte[] readFile(String file) {
-		byte[] datas = null;
+		byte[] data = null;
 		try {
 			byte[] buffer = new byte[1024];
 			FileInputStream stream = new FileInputStream(file);
@@ -135,13 +135,13 @@ public class FileUtils {
 			while ((ch = bis.read(buffer)) != -1) {
 				out.write(buffer, 0, ch);
 			}
-			datas = out.toByteArray();
+			data = out.toByteArray();
 			bis.close();
 			out.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return datas;
+		return data;
 	}
 	
 	/**
@@ -149,7 +149,7 @@ public class FileUtils {
 	 * 判断文件是否存在 data/data/files
 	 * @param context 上下文对象
 	 * @param fileName 文件名
-	 * @return
+	 * @return 成功与否
 	 */
 	public static boolean checkFileIsExists(Context context, String fileName) {
 		java.io.File fileDir = context.getFilesDir();
@@ -163,7 +163,7 @@ public class FileUtils {
 	 * 取得文件最后修改日期
 	 * @param context 上下文对象
 	 * @param fileName 文件名
-	 * @return
+	 * @return 返回时间格式化  yyyy-MM-dd HH:mm:ss
 	 */
 	public static String getFileDatetime(Context context, String fileName) {
 		String dt = "";
@@ -181,7 +181,7 @@ public class FileUtils {
 	 * 判断目录是否存在
 	 * @param context 上下文对象
 	 * @param dirName 文件夹
-	 * @return 返回boolean状态
+	 * @return 成功与否
 	 */
 	public static boolean checkDirectoryIsExists(Context context,
 			String dirName) {
@@ -196,7 +196,7 @@ public class FileUtils {
 	 * 创建新的目录
 	 * @param context 上下文
 	 * @param dirName 目录名称
-	 * @return 创建是否成功
+	 * @return 成功与否
 	 */
 	public static boolean createDirectory(Context context, String dirName) {
 		java.io.File fileDir = context.getFilesDir();
@@ -261,19 +261,19 @@ public class FileUtils {
 
 	/**
 	 * 删除小于给定时间的缓存数据
-	 * @param dir
-	 * @param numDays
+	 * @param dir 指定文件或目录
+	 * @param time 时间戳
 	 * @return 清除文件数量
 	 */
-	public static int clearCacheFolder(File dir, long numDays) {
+	public static int clearCacheFolder(File dir, long time) {
 	    int deletedFiles = 0;
 	    if (dir!= null && dir.isDirectory()) {
 	        try {
 	            for (File child:dir.listFiles()) {
 	                if (child.isDirectory()) {
-	                    deletedFiles += clearCacheFolder(child, numDays);
+	                    deletedFiles += clearCacheFolder(child, time);
 	                }
-	                if (child.lastModified() < numDays) {
+	                if (child.lastModified() < time) {
 	                    if (child.delete()) {
 	                        deletedFiles++;
 	                    }
@@ -289,9 +289,9 @@ public class FileUtils {
 	/**
 	 * 获取缓存文件大小（Data+sdcard目录的）
 	 * 格式化字符串
-	 * @param context
+	 * @param context 上下文对象
 	 * @param cacheRoot 缓存目录
-	 * @return
+	 * @return 返回格式化大小
 	 */
 	public static String getCacheSize(Context context, String cacheRoot) {
 		File fileCache = context.getCacheDir();
@@ -329,7 +329,7 @@ public class FileUtils {
 	/**
 	 * 文件大小格式化显示
 	 * @param fileSize 文件大小
-	 * @return
+	 * @return 格式化显示B、KB、MB、GB
 	 */
 	public static String formatFileSize(long fileSize) {
 		DecimalFormat df = new DecimalFormat("0.00");
@@ -351,12 +351,12 @@ public class FileUtils {
 
 	/**
 	 * 递归求取目录文件个数
-	 * @param f
-	 * @return
+	 * @param file 指定目录
+	 * @return 返回文件个数
 	 */
-	public static long getFileNum(File f) {
+	public static long getFileNum(File file) {
 		long size;
-		File[] fList = f.listFiles();
+		File[] fList = file.listFiles();
 		size = fList.length;
 		for (File aFList : fList) {
 			if (aFList.isDirectory()) {
@@ -432,8 +432,8 @@ public class FileUtils {
 
 	/**
 	 * 文件拷贝
-	 * @param fromFile
-	 * @param toFile
+	 * @param fromFile 待复制的文件
+	 * @param toFile 复制的文件
 	 */
 	public static void copyfile(File fromFile, File toFile) {
 		if (!fromFile.exists()) {
@@ -474,7 +474,7 @@ public class FileUtils {
      * 文件解压解压缩
      * @param zipFile：需要解压缩的文件如：apk等zip包
      * @param descDir：解压后的目标目录
-	 * @throws IOException
+	 * @throws IOException 异常
      */
     public static void unCompress(File zipFile, String descDir) throws IOException {
              ZipFile zf = new ZipFile(zipFile);
@@ -521,7 +521,7 @@ public class FileUtils {
     /**
 	 * 默认压缩
 	 * @param srcFile 源路径
-	 * @throws Exception
+	 * @throws Exception 异常
 	 */
 	public static void compress(File srcFile) throws Exception {
 		String name = srcFile.getName();
@@ -538,7 +538,7 @@ public class FileUtils {
 	 *            源路径
 	 * @param destFile
 	 *            目标路径
-	 * @throws Exception
+	 * @throws Exception 异常
 	 */
 	public static void compress(File srcFile, File destFile) throws Exception {
 
@@ -557,9 +557,9 @@ public class FileUtils {
 	/**
 	 * 压缩文件
 	 * 
-	 * @param srcFile
-	 * @param destPath
-	 * @throws Exception
+	 * @param srcFile 待压缩文件
+	 * @param destPath 目标路径
+	 * @throws Exception 异常
 	 */
 	public static void compress(File srcFile, String destPath) throws Exception {
 		compress(srcFile, new File(destPath));
@@ -574,7 +574,7 @@ public class FileUtils {
 	 *            ZipOutputStream
 	 * @param basePath
 	 *            压缩包内相对路径
-	 * @throws Exception
+	 * @throws Exception 异常
 	 */
 	private static void compress(File srcFile, ZipOutputStream zos,
                                  String basePath) throws Exception {
@@ -589,7 +589,7 @@ public class FileUtils {
 	 * 压缩
 	 * 
 	 * @param srcPath
-	 * @throws Exception
+	 * @throws Exception 异常
 	 */
 	public static void compress(String srcPath) throws Exception {
 		File srcFile = new File(srcPath);
@@ -604,6 +604,7 @@ public class FileUtils {
 	 *            源文件路径
 	 * @param destPath
 	 *            目标文件路径
+	 * @throws Exception 异常
 	 * 
 	 */
 	public static void compress(String srcPath, String destPath)
@@ -616,10 +617,10 @@ public class FileUtils {
 	/**
 	 * 压缩目录
 	 * 
-	 * @param dir
+	 * @param dir 目录
 	 * @param zos
-	 * @param basePath
-	 * @throws Exception
+	 * @param basePath 根目录
+	 * @throws Exception 异常
 	 */
 	private static void compressDir(File dir, ZipOutputStream zos,
                                     String basePath) throws Exception {
@@ -651,7 +652,7 @@ public class FileUtils {
 	 *            ZipOutputStream
 	 * @param dir
 	 *            压缩文件中的当前路径
-	 * @throws Exception
+	 * @throws Exception 异常
 	 */
 	private static void compressFile(File file, ZipOutputStream zos, String dir)
 			throws Exception {
@@ -684,9 +685,9 @@ public class FileUtils {
 
 	/**
 	 * 读取assets 文件内容
-	 * @param context
+	 * @param context 上下文对象
 	 * @param fileName 文件名
-	 * @return
+	 * @return 字符串内容
 	 */
 	 public static String getFromAssets(Context context, String fileName) {
 		return getFromAssets(context, fileName, false);
@@ -694,10 +695,10 @@ public class FileUtils {
 	 
 	/**
 	 * 读取assets 文件内容
-	 * @param context
+	 * @param context 上下文对象
 	 * @param fileName 文件名
 	 * @param isCode 是否是代码 如：js 【主要可以控制去除代码中的注释//】
-	 * @return
+	 * @return 字符串内容
 	 */
 	 public static String getFromAssets(Context context, String fileName, boolean isCode) {
 		InputStream is = null;
