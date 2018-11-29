@@ -22,12 +22,13 @@ Step 2. Add the dependency
 	dependencies {
 	        implementation 'com.github.wavefar:MiniCore:1.0.1'
 	}
-```	
+```
 
 **方法二、从 JCenter 导入**
+
 ```groovy
 dependencies {
-	   implementation 'org.wavefar.lib:mini-core:1.0.0'
+	   implementation 'org.wavefar.lib:mini-core:1.0.1'
 }
 ```
 **方法三、下载源码，本地导入**
@@ -37,7 +38,7 @@ dependencies {
      implementation project(':mini-core')
 }
 ```
-最低支持 android 4.4 ,api 19 
+最低支持 android 4.4 ,api 19 ;[![](https://pub.idqqimg.com/wpa/images/group.png)](https://shang.qq.com/wpa/qunwpa?idkey=be89a6425c922840889d46d452821d68618be7a724ea5bb86ace57c86db0a007)
 
 #### 目录介绍
 - base目录，封装常用基类；
