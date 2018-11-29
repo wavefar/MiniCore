@@ -4,7 +4,7 @@ android快速开发项目介绍，常用公共库（mini-core）整合okHttp、d
 bindingcollectionadapter、agentweb等常用三方工具库；
 #### 使用指南（Usage Guide）
 
-**方法一、从 jitpack导入**
+**方法一、从 jitpack导入[![](https://jitpack.io/v/wavefar/MiniCore.svg)](https://jitpack.io/#wavefar/MiniCore)**
 
 Step 1. Add it in your root build.gradle at the end of repositories:
 
