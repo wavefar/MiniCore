@@ -6,17 +6,15 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+/**
+ * 键盘工具类
+ * @author summer
+ */
 public class KeyBoardUtil {
 
     private KeyBoardUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
-
-    /**
-     * 避免输入法面板遮挡
-     * <p>在manifest.xml中activity中设置</p>
-     * <p>android:windowSoftInputMode="adjustPan"</p>
-     */
 
     /**
      * 动态隐藏软键盘
@@ -29,7 +27,9 @@ public class KeyBoardUtil {
             view = new View(activity);
         }
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     /**
@@ -43,15 +43,20 @@ public class KeyBoardUtil {
         edit.requestFocus();
         InputMethodManager imm = (InputMethodManager) edit.getContext()
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(edit, 0);
+        if (imm != null) {
+            imm.showSoftInput(edit, 0);
+        }
     }
 
     /**
      * 切换键盘显示与否状态
+     * @param context 上下文
      */
     public static void toggleSoftInput(Context context) {
         InputMethodManager imm = (InputMethodManager) context
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+        if (imm != null) {
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+        }
     }
 }

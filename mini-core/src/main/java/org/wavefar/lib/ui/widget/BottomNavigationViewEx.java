@@ -814,9 +814,7 @@ public class BottomNavigationViewEx extends BottomNavigationView {
             Field field = targetClass.getDeclaredField(fieldName);
             field.setAccessible(true);
             return (T) field.get(instance);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
         return null;
@@ -835,9 +833,7 @@ public class BottomNavigationViewEx extends BottomNavigationView {
             Field field = targetClass.getDeclaredField(fieldName);
             field.setAccessible(true);
             field.set(instance, value);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }

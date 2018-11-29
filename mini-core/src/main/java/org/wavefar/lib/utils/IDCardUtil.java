@@ -24,7 +24,7 @@ public class IDCardUtil {
 	private static HashMap<String, String> areaCodeMap;
 
 	static {
-		dateMap = new HashMap<String, Integer>();
+		dateMap = new HashMap<>();
 		dateMap.put("01", 31);
 		dateMap.put("02", null);
 		dateMap.put("03", 31);
@@ -37,7 +37,7 @@ public class IDCardUtil {
 		dateMap.put("10", 31);
 		dateMap.put("11", 30);
 		dateMap.put("12", 31);
-		areaCodeMap = new HashMap<String, String>();
+		areaCodeMap = new HashMap<>();
 		for (String code : areaCode) {
 			areaCodeMap.put(code, null);
 		}

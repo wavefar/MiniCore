@@ -21,7 +21,6 @@ import java.util.Enumeration;
 import java.util.zip.CRC32;
 import java.util.zip.CheckedOutputStream;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
@@ -645,7 +644,14 @@ public class FileUtils {
 
 	/**
 	 * 文件压缩
-	 * 
+	 *
+	 * 压缩包内文件名定义
+	 *
+	 * <pre>
+	 * 如果有多级目录，那么这里就需要给出包含目录的文件名
+	 * 如果用WinRAR打开压缩包，中文名将显示为乱码
+	 * </pre>
+	 *
 	 * @param file
 	 *            待压缩文件
 	 * @param zos
@@ -657,14 +663,6 @@ public class FileUtils {
 	private static void compressFile(File file, ZipOutputStream zos, String dir)
 			throws Exception {
 
-		/**
-		 * 压缩包内文件名定义
-		 * 
-		 * <pre>
-		 * 如果有多级目录，那么这里就需要给出包含目录的文件名
-		 * 如果用WinRAR打开压缩包，中文名将显示为乱码
-		 * </pre>
-		 */
 		ZipEntry entry = new ZipEntry(dir + file.getName());
 
 		zos.putNextEntry(entry);

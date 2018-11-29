@@ -74,13 +74,7 @@ public final class Utils {
             }
             init((Application) app);
             return sApplication;
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (NoSuchMethodException | IllegalAccessException | ClassNotFoundException | InvocationTargetException e) {
             e.printStackTrace();
         }
         throw new NullPointerException("未初始化库异常，在使用之前，你需要在'Application.onCreate()'\" +\n" +
@@ -236,18 +230,10 @@ public final class Utils {
                         return activity;
                     }
                 }
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            } catch (NoSuchFieldException e) {
+            } catch (ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | NoSuchFieldException e) {
                 e.printStackTrace();
             }
-            return null;
+           return null;
         }
     }
 

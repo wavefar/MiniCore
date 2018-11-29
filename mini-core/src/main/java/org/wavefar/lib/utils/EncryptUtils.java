@@ -3,7 +3,6 @@ package org.wavefar.lib.utils;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.security.InvalidAlgorithmParameterException;
 import java.security.Key;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -64,7 +63,7 @@ public class EncryptUtils {
     public static String encodeBase64(byte[] data) {  
         int start = 0;  
         int len = data.length;  
-        StringBuffer buf = new StringBuffer(data.length * 3 / 2);  
+        StringBuilder buf = new StringBuilder(data.length * 3 / 2);
 
         int end = len - 3;  
         int i = start;  
@@ -195,7 +194,7 @@ public class EncryptUtils {
 	private static String encode(String str, String method) {
 		MessageDigest mdInst = null;
 		// 把密文转换成十六进制的字符串形式
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		try {
 			// 获得MD5\SHA摘要算法的 MessageDigest对象
 			mdInst = MessageDigest.getInstance(method);
@@ -203,8 +202,8 @@ public class EncryptUtils {
 			mdInst.update(str.getBytes());
 			// 获得密文
 			byte[] md = mdInst.digest();
-			for (int i = 0; i < md.length; i++) {
-				int tmp = md[i];
+			for (byte aMd : md) {
+				int tmp = aMd;
 				if (tmp < 0) {
 					tmp += 256;
 				}

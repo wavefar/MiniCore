@@ -371,33 +371,31 @@ public class AlertUtils {
             return;
         }
         AlertDialog alertDialog;
-        if (!Utils.isFastDoubleClick(milliseconds)) {
-            try {
-                Context dialogContext = new ContextThemeWrapper(context,
-                        android.R.style.Theme_Light);
-                AlertDialog.Builder builder = new AlertDialog.Builder(dialogContext).setTitle(title);
-                alertDialog = builder.create();
-                ListAdapter adapter = new ArrayAdapter<String>(dialogContext,
-                        android.R.layout.simple_list_item_single_choice, data);
+        if (!Utils.isFastDoubleClick(milliseconds)) try {
+            Context dialogContext = new ContextThemeWrapper(context,
+                    android.R.style.Theme_Light);
+            AlertDialog.Builder builder = new AlertDialog.Builder(dialogContext).setTitle(title);
+            alertDialog = builder.create();
+            ListAdapter adapter = new ArrayAdapter<>(dialogContext,
+                    android.R.layout.simple_list_item_single_choice, data);
 
-                builder.setSingleChoiceItems(adapter, index, onClickListener);
-                builder.setNegativeButton(
-                        context.getResources().getString(R.string.cancel),
-                        new OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                                clearDialog();
-                            }
+            builder.setSingleChoiceItems(adapter, index, onClickListener);
+            builder.setNegativeButton(
+                    context.getResources().getString(R.string.cancel),
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            clearDialog();
+                        }
 
-                        });
+                    });
 
-                if (!alertDialog.isShowing()) {
-                    alertDialog.show();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (!alertDialog.isShowing()) {
+                alertDialog.show();
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

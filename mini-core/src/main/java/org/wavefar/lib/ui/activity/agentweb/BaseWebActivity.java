@@ -158,10 +158,7 @@ public class BaseWebActivity extends BaseSimpleActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
-        if (mAgentWeb.handleKeyEvent(keyCode, event)) {
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
+        return mAgentWeb.handleKeyEvent(keyCode, event) || super.onKeyDown(keyCode, event);
     }
 
     @Override

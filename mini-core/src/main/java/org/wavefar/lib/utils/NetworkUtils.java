@@ -274,53 +274,58 @@ public final class NetworkUtils {
         NetworkType netType = NetworkType.NETWORK_NO;
         NetworkInfo info = getActiveNetworkInfo();
         if (info != null && info.isAvailable()) {
-            if (info.getType() == ConnectivityManager.TYPE_ETHERNET) {
-                netType = NetworkType.NETWORK_ETHERNET;
-            } else if (info.getType() == ConnectivityManager.TYPE_WIFI) {
-                netType = NetworkType.NETWORK_WIFI;
-            } else if (info.getType() == ConnectivityManager.TYPE_MOBILE) {
-                switch (info.getSubtype()) {
+            switch (info.getType()) {
+                case ConnectivityManager.TYPE_ETHERNET:
+                    netType = NetworkType.NETWORK_ETHERNET;
+                    break;
+                case ConnectivityManager.TYPE_WIFI:
+                    netType = NetworkType.NETWORK_WIFI;
+                    break;
+                case ConnectivityManager.TYPE_MOBILE:
+                    switch (info.getSubtype()) {
 
-                    case TelephonyManager.NETWORK_TYPE_GSM:
-                    case TelephonyManager.NETWORK_TYPE_GPRS:
-                    case TelephonyManager.NETWORK_TYPE_CDMA:
-                    case TelephonyManager.NETWORK_TYPE_EDGE:
-                    case TelephonyManager.NETWORK_TYPE_1xRTT:
-                    case TelephonyManager.NETWORK_TYPE_IDEN:
-                        netType = NetworkType.NETWORK_2G;
-                        break;
+                        case TelephonyManager.NETWORK_TYPE_GSM:
+                        case TelephonyManager.NETWORK_TYPE_GPRS:
+                        case TelephonyManager.NETWORK_TYPE_CDMA:
+                        case TelephonyManager.NETWORK_TYPE_EDGE:
+                        case TelephonyManager.NETWORK_TYPE_1xRTT:
+                        case TelephonyManager.NETWORK_TYPE_IDEN:
+                            netType = NetworkType.NETWORK_2G;
+                            break;
 
-                    case TelephonyManager.NETWORK_TYPE_TD_SCDMA:
-                    case TelephonyManager.NETWORK_TYPE_EVDO_A:
-                    case TelephonyManager.NETWORK_TYPE_UMTS:
-                    case TelephonyManager.NETWORK_TYPE_EVDO_0:
-                    case TelephonyManager.NETWORK_TYPE_HSDPA:
-                    case TelephonyManager.NETWORK_TYPE_HSUPA:
-                    case TelephonyManager.NETWORK_TYPE_HSPA:
-                    case TelephonyManager.NETWORK_TYPE_EVDO_B:
-                    case TelephonyManager.NETWORK_TYPE_EHRPD:
-                    case TelephonyManager.NETWORK_TYPE_HSPAP:
-                        netType = NetworkType.NETWORK_3G;
-                        break;
-
-                    case TelephonyManager.NETWORK_TYPE_IWLAN:
-                    case TelephonyManager.NETWORK_TYPE_LTE:
-                        netType = NetworkType.NETWORK_4G;
-                        break;
-                    default:
-
-                        String subtypeName = info.getSubtypeName();
-                        if ("TD-SCDMA".equalsIgnoreCase(subtypeName)
-                                || "WCDMA".equalsIgnoreCase(subtypeName)
-                                || "CDMA2000".equalsIgnoreCase(subtypeName)) {
+                        case TelephonyManager.NETWORK_TYPE_TD_SCDMA:
+                        case TelephonyManager.NETWORK_TYPE_EVDO_A:
+                        case TelephonyManager.NETWORK_TYPE_UMTS:
+                        case TelephonyManager.NETWORK_TYPE_EVDO_0:
+                        case TelephonyManager.NETWORK_TYPE_HSDPA:
+                        case TelephonyManager.NETWORK_TYPE_HSUPA:
+                        case TelephonyManager.NETWORK_TYPE_HSPA:
+                        case TelephonyManager.NETWORK_TYPE_EVDO_B:
+                        case TelephonyManager.NETWORK_TYPE_EHRPD:
+                        case TelephonyManager.NETWORK_TYPE_HSPAP:
                             netType = NetworkType.NETWORK_3G;
-                        } else {
-                            netType = NetworkType.NETWORK_UNKNOWN;
-                        }
-                        break;
-                }
-            } else {
-                netType = NetworkType.NETWORK_UNKNOWN;
+                            break;
+
+                        case TelephonyManager.NETWORK_TYPE_IWLAN:
+                        case TelephonyManager.NETWORK_TYPE_LTE:
+                            netType = NetworkType.NETWORK_4G;
+                            break;
+                        default:
+
+                            String subtypeName = info.getSubtypeName();
+                            if ("TD-SCDMA".equalsIgnoreCase(subtypeName)
+                                    || "WCDMA".equalsIgnoreCase(subtypeName)
+                                    || "CDMA2000".equalsIgnoreCase(subtypeName)) {
+                                netType = NetworkType.NETWORK_3G;
+                            } else {
+                                netType = NetworkType.NETWORK_UNKNOWN;
+                            }
+                            break;
+                    }
+                    break;
+                default:
+                    netType = NetworkType.NETWORK_UNKNOWN;
+                    break;
             }
         }
         return netType;

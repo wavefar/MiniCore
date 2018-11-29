@@ -7,7 +7,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 2
-        versionName "1.0.1"
+        versionName "1.0.2"
         //默认API访问地址配置，在子项目中可以复写该配置；
         buildConfigField("String", "HOST", "\"https://www.52it.club\"")
     }

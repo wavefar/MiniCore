@@ -336,7 +336,7 @@ public class StringUtil {
 	 * @return
 	 */
 	public static ArrayList<String> getImageUrl(String htmlStr){
-		ArrayList<String> listImgUrl = new ArrayList<String>();
+		ArrayList<String> listImgUrl = new ArrayList<>();
 		Matcher matcher= img_patten.matcher(htmlStr);
 		while(matcher.find())
 		{

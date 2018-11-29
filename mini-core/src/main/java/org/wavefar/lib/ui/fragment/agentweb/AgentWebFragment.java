@@ -230,7 +230,7 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 		 */
 		@Override
 		public void onProgress(String url, long loaded, long length, long usedTime) {
-			int mProgress = (int) ((loaded) / Float.valueOf(length) * 100);
+			int mProgress = (int) ((loaded) / (float) length * 100);
 			LogUtils.i(TAG, "onProgress:" + mProgress);
 			super.onProgress(url, loaded, length, usedTime);
 		}
