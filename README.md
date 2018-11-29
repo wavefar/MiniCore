@@ -3,17 +3,38 @@
 android快速开发项目介绍，常用公共库（mini-core）整合okHttp、dataBinding、retrofit、glide、eventbus、
 bindingcollectionadapter、agentweb等常用三方工具库；
 #### 使用指南（Usage Guide）
-**从 JCenter 导入**
+
+**方法一、从 jitpack导入**
+
+Step 1. Add it in your root build.gradle at the end of repositories:
+
+```groovy
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+Step 2. Add the dependency
+
+```groovy
+	dependencies {
+	        implementation 'com.github.wavefar:MiniCore:1.0.1'
+	}
+```	
+
+**方法二、从 JCenter 导入**
 ```groovy
 dependencies {
 	   implementation 'org.wavefar.lib:mini-core:1.0.0'
 }
 ```
-**下载源码，本地导入**
+**方法三、下载源码，本地导入**
 
-```
+```groovy
 dependencies {
-     api project(':mini-core')
+     implementation project(':mini-core')
 }
 ```
 最低支持 android 4.4 ,api 19 
