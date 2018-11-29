@@ -11,7 +11,6 @@ Step 1. Add it in your root build.gradle at the end of repositories:
 ```groovy
 	allprojects {
 		repositories {
-			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
@@ -20,15 +19,15 @@ Step 2. Add the dependency
 
 ```groovy
 	dependencies {
-	        implementation 'com.github.wavefar:MiniCore:1.0.1'
+	        implementation 'com.github.wavefar:MiniCore:$lastVersionName'
 	}
 ```
-
+$lastVersionName：master-SNAPSHOT（为最新预览版）；目前正式发布版本为：[![](https://jitpack.io/v/wavefar/MiniCore.svg)](https://jitpack.io/#wavefar/MiniCore)；
 **方法二、从 JCenter 导入**
 
 ```groovy
 dependencies {
-	   implementation 'org.wavefar.lib:mini-core:1.0.1'
+	   implementation 'org.wavefar.lib:mini-core:$lastVersionName'
 }
 ```
 **方法三、下载源码，本地导入**
