@@ -23,6 +23,7 @@ Step 2. Add the dependency
 	}
 ```
 $lastVersionName：master-SNAPSHOT（为最新预览版）；目前正式发布版本为：[![](https://jitpack.io/v/wavefar/MiniCore.svg)](https://jitpack.io/#wavefar/MiniCore)；
+
 **方法二、从 JCenter 导入**
 
 ```groovy
