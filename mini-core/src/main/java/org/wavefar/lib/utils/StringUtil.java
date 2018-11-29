@@ -41,10 +41,6 @@ public class StringUtil {
 	 * 获取网页中的图片地址
 	 */
 	private static Pattern  img_patten = Pattern.compile("src=\"?(.*?)(\"|>|\\s+)");
-	/**
-	 * 英文、数字、中文
-	 */
-	private static Pattern alias_pattern = Pattern.compile("^[\u4E00-\u9FA50-9a-zA-Z_-]*}$");
 
 	/**
 	 * 金额验证
@@ -72,10 +68,9 @@ public class StringUtil {
 		}
 		char[] c = s.toCharArray();
 		int len = 0;
-		int length = c.length;
-		for (int i = 0; i < length; i++) {
+		for (char aC : c) {
 			len++;
-			if (!isLetter(c[i])) {
+			if (!isLetter(aC)) {
 				len++;
 			}
 		}
@@ -98,9 +93,9 @@ public class StringUtil {
 	/**
 	 * 以中文字长度计算，截取字符串
 	 * 
-	 * @param origin
-	 * @param len
-	 * @param c
+	 * @param origin 源字符串
+	 * @param len 截取长度
+	 * @param c 链接的字符串
 	 * @return
 	 */
 	public static String substring(String origin, int len, String c) {
@@ -191,14 +186,6 @@ public class StringUtil {
 		return (isMobileNo(account)||checkEmail(account));
 	}
 
-	/**
-	 * 校验Tag Alias 只能是数字,英文字母和中文
-	 */
-    public static boolean isValidTagAndAlias(String s) {
-        Matcher m = alias_pattern.matcher(s);
-        return m.matches();
-    }
-    
     /**
      * 金额验证
      * @param str
@@ -331,7 +318,7 @@ public class StringUtil {
 
     /**
      * 格式化小数
-     * @param value
+     * @param value 待处理数
      * @param pattern 如为null,则默认为0.00格式；
      * @return
      */
@@ -364,9 +351,9 @@ public class StringUtil {
 	 * @return
 	 */
 	public static String getHtmlString(String source){
-	    Matcher m_html = html_patten.matcher(source);
+	    Matcher html = html_patten.matcher(source);
 		// 过滤html标签
-	    return m_html.replaceAll("");
+	    return html.replaceAll("");
 	}
 	
 	/**
