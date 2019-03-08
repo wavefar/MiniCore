@@ -1,5 +1,6 @@
 package org.wavefar.lib.net;
 
+
 import org.wavefar.lib.BuildConfig;
 import org.wavefar.lib.net.callback.BaseResultCallback;
 import org.wavefar.lib.net.callback.RxBusSubscriber;
@@ -30,37 +31,48 @@ public class HttpClientManager {
 
     private final Http mHttp;
     private static Map<String, String> mHeaders = new HashMap<>();
-
+    private static boolean mEnableDebug = BuildConfig.DEBUG;
     private static class SingletonHolder {
         private static HttpClientManager INSTANCE = new HttpClientManager(mHeaders);
     }
 
     /**
      * 构建网络请求工具
-     *
      * @return
      */
     public static HttpClientManager getInstance() {
-        return getInstance(null);
+        return getInstance(null,mEnableDebug);
+    }
+
+    /**
+     * 构建网络请求工具
+     * @param enableDebug 是否开启日志
+     * @return
+     */
+    public static HttpClientManager getInstance(boolean enableDebug) {
+        return getInstance(null,enableDebug);
     }
 
     /**
      * 构建网络请求工具
      *
      * @param headers 全局公共头信息
+     * @param enableDebug 是否开启日志
      * @return
      */
-    public static HttpClientManager getInstance(Map<String, String> headers) {
+    public static HttpClientManager getInstance(Map<String, String> headers,boolean enableDebug) {
         if (headers != null) {
             mHeaders.putAll(headers);
         }
+        mEnableDebug = enableDebug;
         return SingletonHolder.INSTANCE;
     }
 
 
     private HttpClientManager(Map<String, String> headers) {
         Http.HttpBuilder httpBuilder = new Http.HttpBuilder()
-                .setBaseUrl(BuildConfig.HOST);
+                .setBaseUrl(BuildConfig.HOST)
+                .enableDebug(mEnableDebug);
         if (headers != null) {
             httpBuilder.addInterceptor(new HeaderInterceptor(headers));
         }

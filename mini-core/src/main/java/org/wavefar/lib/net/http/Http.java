@@ -42,7 +42,7 @@ public class Http {
     private void configOKHttp() {
 
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        if (BuildConfig.DEBUG) {
+        if (mBuilder.enableDebug) {
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             builder.addInterceptor(loggingInterceptor);
@@ -81,6 +81,7 @@ public class Http {
         private CookieJar cookieJar;
         private long timeout = 20;
         private boolean enableSSL;
+        private boolean enableDebug = BuildConfig.DEBUG;
         private ArrayList<Interceptor> interceptors = new ArrayList<>();
 
         public HttpBuilder setBaseUrl(String baseUrl) {
@@ -104,6 +105,10 @@ public class Http {
         }
         public HttpBuilder enableSSL(boolean enableSSL) {
             this.enableSSL = enableSSL;
+            return  this;
+        }
+        public HttpBuilder enableDebug(boolean enableDebug) {
+            this.enableDebug = enableDebug;
             return  this;
         }
 

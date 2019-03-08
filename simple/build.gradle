@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "com.lq.cxy.shop"
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 27 //降级防止Android9.0 HTTP明文传输限制,APP gradle target需为27或配置xml允许明文传输或支持https
         versionCode 1
         versionName "v1.0.0"
         flavorDimensions "versionCode"
@@ -65,7 +65,6 @@ android {
 }
 
 repositories {
-
     jcenter()
 }
 
@@ -84,7 +83,8 @@ dependencies {
     implementation 'com.contrarywind:Android-PickerView:4.1.6'
     implementation 'liji.library.dev:citypickerview:3.1.13'
     //local
-//    api project(':mini-core')
+    api project(':mini-core')
     //jitpack
-    implementation 'com.github.wavefar:MiniCore:master-SNAPSHOT'
+    //implementation 'com.github.wavefar:MiniCore:1.0.2'
+    //implementation 'wavefar.wavefar:MiniCore:1.0.2'
 }

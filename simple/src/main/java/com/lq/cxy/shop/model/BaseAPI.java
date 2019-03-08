@@ -1,9 +1,5 @@
 package com.lq.cxy.shop.model;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
-
 import com.lq.cxy.shop.Constant;
 import com.lq.cxy.shop.activity.LoginActivity;
 import com.lq.cxy.shop.model.entity.UserEntity;
@@ -14,13 +10,10 @@ import org.wavefar.lib.utils.DeviceUtils;
 import org.wavefar.lib.utils.EncryptUtils;
 import org.wavefar.lib.utils.IntentUtils;
 import org.wavefar.lib.utils.LogUtil;
-import org.wavefar.lib.utils.Utils;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -44,7 +37,7 @@ public class BaseAPI {
         } else {
             header = null;
         }
-        httpClientManager = HttpClientManager.getInstance().setHeader(header);
+        httpClientManager = HttpClientManager.getInstance(false).setHeader(header);
     }
 
     /**
@@ -79,6 +72,7 @@ public class BaseAPI {
         if (null != userEntity) {
             hashMap.put("customerId", userEntity.getUserId());
         }
+
         hashMap.put("deviceId", DeviceUtils.getDeviceId());
         hashMap.put("timestamp", String.valueOf(time));
         hashMapStr.putAll(hashMap);
