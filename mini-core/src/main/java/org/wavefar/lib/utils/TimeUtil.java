@@ -210,8 +210,8 @@ public class TimeUtil {
         targetCalendar.setTime(new Date(timestamp * 1000));
         int targetDay = targetCalendar.get(Calendar.DAY_OF_YEAR);
         String timeStr;
-        // 30天以上
-        if (currentDay - targetDay > 1) {
+        // 处理跨年显示
+        if (Math.abs(currentDay - targetDay) > 1) {
             timeStr = getTime2String(timestamp * 1000, "MM月dd日");
         } else if (currentDay - targetDay == 1) {
             timeStr = "昨天" + getTime2String(timestamp * 1000, "HH:mm");
